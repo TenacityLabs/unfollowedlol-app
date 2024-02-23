@@ -27,9 +27,9 @@ const Frame2 = () => {
        
                     </div>
                 </div>
-                <div className="flex-col flex gap-[40px] w-[540px]">
-                    <p className="text-white text-[40px] font-bold leading-[110%] w-[400px]">Keep an eye on other profiles’ follower activity</p>
-                    <p className="text-white text-[24px]">See who’s following your friends (and exes 👀)!</p>
+                <div className="flex-col flex gap-[40px] items-center">
+                    <p className="text-white text-[40px] font-bold leading-[110%] max-w-[500px] text-center sm:text-left">Keep an eye on other profiles’ follower activity</p>
+                    <p className="text-white text-[24px] text-center sm:text-left">See who’s following your friends (and exes 👀)!</p>
                 </div>
             </div>
         </div>

@@ -10,20 +10,24 @@ import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
-    <main>
+    <main className="overflow-hidden">
+      <div className="w-screen flex flex-col relative">
+        
+      </div>
+      
       <div className="bg-[#0B0B0F] w-screen flex flex-col ">
-        <div className="h-screen flex flex-col">
+        <div className="h-screen flex flex-col z-[1]">
           <Header />
           <Hero />
         </div>
-        <div className="flex flex-col"> 
+        <div className="flex flex-col z-[1]"> 
         {/* adjust height */}
           <Frame1 />
         </div>
-        <div className="h-screen flex flex-col">
+        <div className="h-screen flex flex-col z-[1]">
           <Frame2 />
         </div>
-        <div className="h-screen flex flex-col">
+        <div className="h-screen flex flex-col z-[1]">
           <div className="flex-1 flex flex-wrap justify-around items-center h-full">
             <div className="w-[510px] h-[90px]">
               <p className="text-white text-[40px] font-bold">See who's not following you back</p>
@@ -33,14 +37,14 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div className="flex flex-col">
+        <div className="flex flex-col z-[1]">
           <Frame3 />
         </div>
-        <div className="flex flex-col">
+        <div className="flex flex-col z-[1]">
           <FAQ />
         </div>
 
-        <div className="flex flex-col">
+        <div className="flex flex-col z-[1]">
           <Footer />
         </div>
         

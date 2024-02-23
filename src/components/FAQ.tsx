@@ -1,7 +1,7 @@
 const FAQ = () => {
     return ( 
         <div className="
-        p-[120px]
+        p-8 sm:p-20 
         flex 
         flex-col 
         gap-[56px] 

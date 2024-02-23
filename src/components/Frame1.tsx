@@ -6,7 +6,7 @@ const Frame1 = () => {
         <div className="flex-1">
             <div className="flex flex-wrap justify-around items-center h-full">
                 <div className="h-[90px] w-[510px]">
-                    <p className="text-white text-[40px] font-bold leading-[110%]">Track your profile's followers and unfollowers</p>
+                    <p className="text-white text-[40px] font-bold leading-[110%] text-center sm:text-left">Track your profile's followers and unfollowers</p>
                 </div>
                 <div>
                     <div className="h-[800px] w-[435px] bg-white rounded-[20px] p-[30px] flex flex-col gap-[20px] self-end">
