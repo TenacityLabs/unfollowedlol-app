@@ -4,7 +4,7 @@ const Frame3 = () => {
             <div className="grid-cols-2 grid justify-items-center wrap:flex wrap:flex-wrap-reverse justify-around items-center h-full">
                 <div className="relative">
                     <img src="/Vector.png" alt="" />
-                        {/* <img src="/Vector.svg" alt="" className="absolute bottom-[350px] left-[110px]"/> */}
+                    <img src="/Vector.svg" alt="" className="absolute left-[50%] top-[50%] -translate-x-[50%] -translate-y-[50%]"/>
                 </div>
 
 
