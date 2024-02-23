@@ -1,5 +1,6 @@
 import type { Config } from "tailwindcss";
 
+
 const config: Config = {
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
@@ -7,6 +8,11 @@ const config: Config = {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
+    screens: {
+      'wrap' : {'max' : '1048px'},
+      'sm' : '640px'
+    }
+    ,
     extend: {
       backgroundImage: {
         'faq-bg': "url('/public/FAQ-bg.png')"

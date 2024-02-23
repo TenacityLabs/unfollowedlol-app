@@ -28,11 +28,11 @@ export default function Home() {
           <Frame2 />
         </div>
         <div className="h-screen flex flex-col z-[1]">
-          <div className="flex-1 flex flex-wrap justify-around items-center h-full">
-            <div className="w-[510px] h-[90px]">
+          <div className="grid-cols-2 grid justify-items-center wrap:flex wrap:flex-wrap flex-1 justify-around items-center h-full">
+            <div className="flex:w-screen h-[90px] text-center">
               <p className="text-white text-[40px] font-bold">See who's not following you back</p>
             </div>
-            <div className="w-[440px] h-[490px] bg-[#D9D9D9] rounded-[10px]">
+            <div className="w-[440px] h-[490px] bg-[#D9D9D9] rounded-[10px] ">
 
             </div>
           </div>

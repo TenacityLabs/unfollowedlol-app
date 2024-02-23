@@ -27,8 +27,7 @@ const Status = (props: any) => {
                                             {props.followed ? <img src="/arrow-purple.svg" alt="" className='self-start'/> : <img src="/arrow-red.svg" alt="" className='self-start'/>}
                                             {props.followed ? <p className="text-[15px] text-[#7165FF]">Followed</p> : <p className="text-[15px] text-[#FF718B]">Unfollowed</p>}
                                             <ProfilePictures />
-                                           
-                                            <p className="text-[15px]">@<span className='font-medium'>{props.name2}</span> {profiles.length > 1 ? "and others" : ""}</p>
+                                            <p className="max-[405px]:hidden">@<span className='font-medium'>{props.name2}</span> {profiles.length > 1 ? "and others" : ""}</p>
                                         </div>
                                     </div>
                                 </div>

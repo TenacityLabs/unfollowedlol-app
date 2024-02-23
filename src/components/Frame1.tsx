@@ -4,16 +4,18 @@ import Status from './Status';
 const Frame1 = () => {
     return ( 
         <div className="flex-1">
-            <div className="flex flex-wrap justify-around items-center h-full">
-                <div className="h-[90px] w-[510px]">
-                    <p className="text-white text-[40px] font-bold leading-[110%] text-center sm:text-left">Track your profile's followers and unfollowers</p>
+            <div className="grid-cols-2 grid wrap:flex wrap:flex-wrap justify-items-center justify-around items-center h-full">
+                <div className="mb-[10%] wrap:w-screen flex justify-center">
+                    <div className="max-w-[540px] ">
+                        <p className="text-white text-[40px] font-bold leading-[110%] text-center sm:text-left">Track your profile's followers and unfollowers</p>
+                    </div>
                 </div>
                 <div>
-                    <div className="h-[800px] w-[435px] bg-white rounded-[20px] p-[30px] flex flex-col gap-[20px] self-end">
+                    <div className="max-h-[800px] max-w-[435px] bg-white rounded-[20px] p-[30px] flex flex-col gap-[20px] self-end wrap:w-screen">
                         <p className="text-[#000F4E] text-[30px] font-bold"><span className="text-[#7993FF]">Un</span>followed.lol</p>
                         
                         <div className="w-full flex flex-col gap-[20px]">
-                            <p className="font-bold text-[20px] text-[#262626]">Yesterday</p>
+                            <p className="font-bold text-[20px] text-[#262626]">Yesterday</p> 
                             <div className="flex flex-col gap-[24px]">
                                 <Status followed={false} others={true} user1={{name: 'jessica121', pfp: 'Photo (5).svg'}} name2={'jgk'} profiles={['/Ellipse 472.svg', '/Ellipse 473 (1).svg', '/Ellipse 473.svg' ]} />
                             </div>
