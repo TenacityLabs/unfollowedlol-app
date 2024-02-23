@@ -1,15 +1,15 @@
 const Header = () => {
     return ( 
         <div className="h-[80px] w-screen justify-items-center items-center flex flex-shrink-0 justify-around">
-            <p className="text-white font-bold text-base text-[24px]" >unfollowed.lol</p>
+            <p className="text-white font-bold text-[24px]" >unfollowed.lol</p>
             <div className="flex gap-[32px]">
-                <p className="text-white text-[18px]">
+                <p className="text-white text-[18px] cursor-pointer">
                     About
                 </p>
-                <p className="text-white text-[18px]">
+                <p className="text-white text-[18px] cursor-pointer">
                     Features
                 </p>
-                <p className="text-white text-[18px]">
+                <p className="text-white text-[18px] cursor-pointer">
                     FAQ
                 </p>
             </div>

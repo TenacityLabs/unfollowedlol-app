@@ -6,6 +6,7 @@ import Frame2 from "@/components/Frame2";
 import './globals.css';
 import Frame3 from "@/components/Frame3";
 import FAQ from "@/components/FAQ";
+import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
@@ -37,6 +38,10 @@ export default function Home() {
         </div>
         <div className="flex flex-col">
           <FAQ />
+        </div>
+
+        <div className="flex flex-col">
+          <Footer />
         </div>
         
       </div>
