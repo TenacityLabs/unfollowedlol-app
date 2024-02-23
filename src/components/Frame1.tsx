@@ -4,12 +4,12 @@ import Status from './Status';
 const Frame1 = () => {
     return ( 
         <div className="flex-1">
-            <div className="grid-cols-2 grid justify-items-center items-center h-full">
+            <div className="flex flex-wrap justify-around items-center h-full">
                 <div className="h-[90px] w-[510px]">
                     <p className="text-white text-[40px] font-bold leading-[110%]">Track your profile's followers and unfollowers</p>
                 </div>
                 <div>
-                    <div className="h-[800px] w-[435px] bg-white rounded-[20px] p-[30px] flex flex-col gap-[20px]">
+                    <div className="h-[800px] w-[435px] bg-white rounded-[20px] p-[30px] flex flex-col gap-[20px] self-end">
                         <p className="text-[#000F4E] text-[30px] font-bold"><span className="text-[#7993FF]">Un</span>followed.lol</p>
                         <div className="w-full flex flex-col gap-[12px]">
                             <p className="font-bold text-[20px] text-[#262626]">Yesterday</p>

@@ -1,6 +1,7 @@
 
 
 const Status = (props: any) => {
+    // props changed depending on usage
     const profiles: string[] = props.profiles;
 
     const ProfilePictures = () => {
@@ -28,11 +29,7 @@ const Status = (props: any) => {
                                             {props.followed ? <img src="/arrow-purple.svg" alt="" className='self-start'/> : <img src="/arrow-red.svg" alt="" className='self-start'/>}
                                             {props.followed ? <p className="text-[15px] text-[#7165FF]">Followed</p> : <p className="text-[15px] text-[#FF718B]">Unfollowed</p>}
                                             <ProfilePictures />
-                                            {/* <div className='flex relative h-[20px] w-[40px]'>
-                                                <img src="Ellipse 472.svg" alt="" className='h-[20px] w-[20px]' />
-                                                <img src="Ellipse 473 (1).svg" alt="" className='h-[20px] w-[20px] absolute left-[10px]'/>
-                                                <img src="Ellipse 473.svg" alt="" className='h-[20px] w-[20px] absolute left-[20px]'/>
-                                            </div> */}
+                                           
                                             <p className="text-[15px]">@<span className='font-medium'>{props.name2}</span> {profiles.length > 1 ? "and others" : ""}</p>
                                         </div>
                                     </div>
