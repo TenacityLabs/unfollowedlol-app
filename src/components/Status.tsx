@@ -6,11 +6,9 @@ const Status = (props: any) => {
 
     const ProfilePictures = () => {
         
-        
-        const width: string = 'w-[' + (20 + (10 * (profiles.length - 1))) + 'px]';
-
         return ( 
-            <div className={width + ' flex relative h-[20px]'}>
+            // <div className={width + ' flex relative h-[20px]'}>
+            <div className={profiles[2] ? "w-[40px] flex relative h-[20px]" : profiles[1] ? "w-[30px] flex relative h-[20px]" : "w-[20px] flex relative h-[20px]" }>
                 <img src={profiles[0]} alt="" className='h-[20px] w-[20px]' />
                 {profiles[1] ? <img src={profiles[1]} alt="" className='h-[20px] w-[20px] absolute left-[10px]'/> : <></>}
                 {profiles[2] ? <img src={profiles[2]} alt="" className='h-[20px] w-[20px] absolute left-[20px]'/> : <></>}
