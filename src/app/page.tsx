@@ -12,7 +12,7 @@ export default function Home() {
   return (
     <main className="overflow-hidden">
       
-      <div className="bg-[#0B0B0F] w-screen flex flex-col " >
+      <div className="bg-[#0B0B0F] w-screen flex flex-col" >
         
         <div className="h-screen flex flex-col mb-[20%] relative">
           <div className="w-[10%] h-[10%] left-[10%] top-[5%] absolute bg-gradient-to-b from-[#000000] to-[#FFD5CC] rounded-full blur-[100px]" />
@@ -69,8 +69,8 @@ export default function Home() {
 
           
           <div className="grid-cols-2 grid justify-items-center wrap:flex wrap:flex-wrap flex-1 justify-around items-center h-full z-[1]">
-            <div className="flex:w-screen h-[90px] text-center">
-              <p className="text-white text-[40px] font-bold">See who's not following you back</p>
+            <div className="flex:w-screen text-center">
+              <p className="text-white text-[40px] font-bold leading-[110%] text-left wrap:text-center wrap:pr-[4%] wrap:pl-[4%]">See who's not following you back</p>
             </div>
             <div className="w-[440px] h-[490px] bg-[#D9D9D9] rounded-[10px] ">
 
@@ -80,13 +80,16 @@ export default function Home() {
         <div className="flex flex-col z-[1]">
           <Frame3 />
         </div>
-        <div className="flex flex-col z-[1]">
-          <FAQ />
-        </div>
+        <div>
+          <div className="flex flex-col z-[1]">
+            <FAQ />
+          </div>
 
-        <div className="flex flex-col z-[1]">
-          <Footer />
+          <div className="flex flex-col z-[1]">
+            <Footer />
+          </div>
         </div>
+        
         
       </div>
       

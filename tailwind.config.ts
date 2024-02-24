@@ -12,6 +12,7 @@ const config: Config = {
       'wrap' : {'max' : '1048px'},
       'sm' : '640px',
       'hero-text' : '675px',
+      'mobile' : {'max' : '400px'}
     }
     ,
     extend: {
