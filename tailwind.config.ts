@@ -10,7 +10,8 @@ const config: Config = {
   theme: {
     screens: {
       'wrap' : {'max' : '1048px'},
-      'sm' : '640px'
+      'sm' : '640px',
+      'hero-text' : '675px',
     }
     ,
     extend: {

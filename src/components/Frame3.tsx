@@ -1,6 +1,6 @@
 const Frame3 = () => {
     return ( 
-        <div className="flex-1">
+        <div className="flex-1 z-[1]">
             <div className="grid-cols-2 grid justify-items-center wrap:flex wrap:flex-wrap-reverse justify-around items-center h-full">
                 <div className="relative">
                     <img src="/Vector.png" alt="" />

@@ -2,7 +2,7 @@ import User from "./User";
 
 const Frame2 = () => {
     return ( 
-        <div className="flex-1">
+        <div className="flex-1 z-[1] ">
             <div className="grid-cols-2 grid justify-items-center wrap:flex wrap:flex-wrap-reverse justify-around items-center h-full">
 
                 <div className="bg-white w-[560px] h-[360px] rounded-[12px] flex flex-col ">

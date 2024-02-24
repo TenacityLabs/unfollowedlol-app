@@ -3,8 +3,8 @@ import Status from './Status';
 
 const Frame1 = () => {
     return ( 
-        <div className="flex-1">
-            <div className="grid-cols-2 grid wrap:flex wrap:flex-wrap justify-items-center justify-around items-center h-full">
+        <div className="flex-1 z-[1]">
+            <div className="z-[1] grid-cols-2 grid wrap:flex wrap:flex-wrap justify-items-center justify-around items-center h-full">
                 <div className="mb-[10%] wrap:w-screen flex justify-center">
                     <div className="max-w-[540px] ">
                         <p className="text-white text-[40px] font-bold leading-[110%] text-center sm:text-left">Track your profile's followers and unfollowers</p>
