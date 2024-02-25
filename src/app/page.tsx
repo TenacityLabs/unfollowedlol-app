@@ -70,7 +70,7 @@ export default function Home() {
           
           <div className="grid-cols-2 grid justify-items-center wrap:flex wrap:flex-wrap flex-1 justify-around items-center h-full z-[1]">
             <div className="flex:w-screen text-center">
-              <p className="text-white text-[40px] font-bold leading-[110%] text-left wrap:text-center wrap:pr-[4%] wrap:pl-[4%]">See who's not following you back</p>
+              <p className="text-white text-[40px] font-bold leading-[110%] text-left wrap:text-center wrap:pr-[4%] wrap:pl-[4%]">See who&apos;s not following you back</p>
             </div>
             <div className="w-[440px] h-[490px] bg-[#D9D9D9] rounded-[10px] ">
 

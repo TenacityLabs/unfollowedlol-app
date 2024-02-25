@@ -7,7 +7,7 @@ const Frame1 = () => {
             <div className="z-[1] grid-cols-2 grid wrap:flex wrap:flex-wrap justify-items-center justify-around items-center h-full">
                 <div className="mb-[10%] wrap:w-screen flex justify-center">
                     <div className="">
-                        <p className="text-white text-[40px] font-bold leading-[110%] text-left wrap:text-center p-[4%]">Track your profile's followers and unfollowers</p>
+                        <p className="text-white text-[40px] font-bold leading-[110%] text-left wrap:text-center p-[4%]">Track your profile&apos;s followers and unfollowers</p>
                     </div>
                 </div>
                 <div>

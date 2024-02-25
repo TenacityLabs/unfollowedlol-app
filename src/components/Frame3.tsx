@@ -10,7 +10,7 @@ const Frame3 = () => {
 
                 <div className="max-w-[500px] flex flex-col gap-[40px] p-[4%]">
                     <p className="text-white font-bold text-[40px] text-left wrap:text-center">Privacy first, always.</p>
-                    <p className="text-white text-[24px] text-left wrap:text-center">We’ll never ask you to login to your Instagram account or enter any personal information. Ever.</p>
+                    <p className="text-white text-[24px] text-left wrap:text-center">We&apos;ll never ask you to login to your Instagram account or enter any personal information. Ever.</p>
                 </div>
             </div>
         </div>
