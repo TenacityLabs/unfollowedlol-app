@@ -81,7 +81,7 @@ export default function Home() {
           <Frame3 />
         </div>
         <div>
-          <div className="flex flex-col z-[1]">
+          <div id="faq" className="flex flex-col z-[1]">
             <FAQ />
           </div>
 
