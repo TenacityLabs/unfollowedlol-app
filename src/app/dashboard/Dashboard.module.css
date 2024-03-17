@@ -1,0 +1,74 @@
+.top-gradient{
+    background: radial-gradient(circle at 70% 100%, rgba(179, 87, 155, 0.75) 0%, 
+    rgba(109, 158, 199, 0.6) 70%),
+    radial-gradient(circle at 20% 70%, rgba(153, 137, 198, 0.9) 0%, 
+    rgba(126, 183, 230, 0.5) 50%),
+    radial-gradient(circle at 40% 20%, rgba(238, 234, 248, 0.3) 0%, 
+    rgba(212, 228, 242, 0.3) 70%);
+}
+
+.analyze-loadingbar{
+    background: linear-gradient(90deg, rgba(255, 255, 255, 1) 0%, 
+    rgba(255, 255, 255, 1) 70%, transparent 100%)
+}
+
+.loading-card {
+    background-color: #f9fafb;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    border-radius: 0.75rem;
+    margin-right: 1rem;
+    animation: waver infinite 1.5s ease-in-out; 
+}
+
+.loading-card-flex {
+    background-color: #f9fafb;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    border-radius: 0.75rem;
+    animation: waver infinite 1.5s ease-in-out; 
+}
+
+@keyframes 
+waver{
+    0%{
+        filter: brightness(1);
+    }
+    50%{
+        filter: brightness(0.96);
+    }
+    100%{
+        filter: brightness(1);
+    }
+}
+
+.card {
+    background-image: linear-gradient(to bottom, #ffffff, #f9fafb);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    border-radius: 0.75rem;
+    padding: 1.75rem;
+    border-width: 1px;
+    border-color: rgba(0, 0, 0, 0.1)
+}
+  
+.card:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    background: linear-gradient(to bottom, var(--gradient-from-color, #ffffff), var(--gradient-to-color, #f9fafb));
+}
+  
+.card:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    box-shadow: 0 4px 6px -1px var(--shadow-color, rgba(0, 0, 0, 0.1)), 0 2px 4px -1px var(--shadow-color, rgba(0, 0, 0, 0.06));
+    border-radius: 0.75rem;
+}
+  

@@ -1,7 +1,6 @@
 "use client";
 
 const Header = () => {
-
     const scrollToFAQ = (event: any) => {
         event.preventDefault(); 
         const element = document.getElementById("faq");

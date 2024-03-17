@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import { Red_Hat_Text, Arvo } from "next/font/google"
 import "./globals.css";
 
