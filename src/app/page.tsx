@@ -11,28 +11,28 @@ export default function Home() {
     <main className="overflow-hidden">
       <div className="bg-[#0B0B0F] w-screen flex flex-col" >
         <div className="h-screen flex flex-col mb-1/5 relative">
-          <div className="w-1/12 h-1/12 left-1/12 top-[5%] absolute bg-gradient-to-b from-[#000000] to-[#FFD5CC] rounded-full blur-3xl" />
-          <div className="w-1/6 h-1/5 left-1/12 top-[5%] absolute bg-gradient-to-b from-[#891600] to-[#661100] blur-[6rem]" />
+        <div className="w-[10%] h-[10%] left-[10%] top-[5%] absolute bg-gradient-to-b from-[#000000] to-[#FFD5CC] rounded-full blur-[100px]" />
+          <div className="w-[15%] h-[20%] left-[10%] top-[5%] absolute bg-gradient-to-b from-[#891600] to-[#661100] blur-[100px]" />
         
-          <div className="z-10 w-[12%] h-[20%] right-[8%] top-[40%] absolute bg-gradient-to-l from-[#00c3ff] to-[#FF29C3] rounded-full blur-[5rem]" />
-          <div className="z-10 w-[15%] h-[35%] right-[0%] top-[55%] translate-x-[50%] absolute bg-gradient-to-b from-[#184BFF] to-[#174AFF] blur-[6rem]" />
+          <div className="z-10 w-[12%] h-[20%] right-[8%] top-[40%] absolute bg-gradient-to-l from-[#00c3ff] to-[#FF29C3] rounded-full blur-[80px]" />
+          <div className="z-10 w-[15%] h-[35%] right-[0%] top-[55%] translate-x-[50%] absolute bg-gradient-to-b from-[#184BFF] to-[#174AFF] blur-[110px]" />
           
-          <div className="absolute w-[75rem] h-[31rem] left-1/2 top-1/2 -translate-x-[55%] -translate-y-[40%] rotate-[14deg] rounded-[100%] border border-zinc-700 opacity-50 z-0">
+          <div className="absolute w-[1200px] h-[500px] left-[50%] top-[50%] -translate-x-[55%] -translate-y-[40%] rotate-[14deg] rounded-[100%] border border-zinc-700 opacity-50 z-0">
             <div className="w-full h-full relative">
-              <p className="text-7xl absolute top-[15%] left-[2%]">🍵</p>
-              <p className="text-7xl absolute bottom-[30%] right-[-2%] -skew-x-12">😂</p>
-              <img src="/sphere.svg" className="absolute w-20 bottom-[20%] left-[2%]" alt="" />
+              <p className="text-[76px] absolute top-[15%] left-[2%]">🍵</p>
+              <p className="text-[76px] absolute bottom-[30%] right-[-2%] -skew-x-12">😂</p>
+              <img src="/sphere.svg" className="absolute w-[76px] bottom-[20%] left-[2%]" alt="" />
 
             </div>
           </div>
-          <div className="absolute w-[109rem] h-[47rem] left-[50%] top-[50%] -translate-x-[55%] -translate-y-[40%] rotate-[14deg] rounded-[100%] border border-zinc-700 opacity-50 z-0">
+          <div className="absolute w-[1750px] h-[750px] left-[50%] top-[50%] -translate-x-[55%] -translate-y-[40%] rotate-[14deg] rounded-[100%] border border-zinc-700 opacity-50 z-0">
             <div className="w-full h-full relative">
-              <p className="text-7xl absolute top-[5%] right-[15%] skew-y-[23deg]">😱</p>
-              <p className="text-7xl absolute bottom-[-5%] left-[30%] skew-x-[20deg] rotate-[-12deg]">🤫</p>
+              <p className="text-[76px] absolute top-[5%] right-[15%] skew-y-[23deg]">😱</p>
+              <p className="text-[76px] absolute bottom-[-5%] left-[30%] skew-x-[20deg] rotate-[-12deg]">🤫</p>
 
             </div>
           </div>
-          <div className="absolute w-[150rem] h-[62rem] left-[50%] top-[50%] -translate-x-[55%] -translate-y-[40%] rotate-[14deg] rounded-[100%] border border-zinc-700 opacity-50 z-0" />
+          <div className="absolute w-[2400px] h-[1000px] left-[50%] top-[50%] -translate-x-[55%] -translate-y-[40%] rotate-[14deg] rounded-[100%] border border-zinc-700 opacity-50 z-0" />
 
           <img src="/sphere.png" className="opacity-80 absolute w-[12%] right-[0%] top-[50%] z-0" alt="" />
 
@@ -59,10 +59,8 @@ export default function Home() {
         </div>
         </div>
         <div className="flex flex-col relative"> 
-        {/* adjust height */}
           <div className="w-[30%] h-[15%] left-[12%] top-[40%] -translate-x-[80%] absolute bg-gradient-to-l from-[#FF29C3] to-[#00c3ff] rounded-full blur-[125px]" />
           <div className="w-[15%] h-[35%] left-[0%] top-[20%] -translate-x-[80%] absolute bg-gradient-to-b from-[#184BFF] to-[#174AFF] blur-[180px]" />
-
           
           <StatusDemo />
         </div>
@@ -74,7 +72,6 @@ export default function Home() {
         <div className="h-screen flex flex-col relative">
           <div className="w-[30%] h-[15%] left-1/12 top-[40%] -translate-x-[60%] absolute bg-gradient-to-l from-[#FF29C3] to-[#00c3ff] rounded-full blur-[115px]" />
           <div className="w-[16%] h-[35%] left-[0%] top-[50%] -translate-x-[60%] absolute bg-gradient-to-t from-[#184BFF] to-[#174AFF] blur-[150px]" />
-
           
           <UserDemo2 />
         </div>
@@ -86,10 +83,9 @@ export default function Home() {
                     <img src="/Vector.svg" alt="" className="absolute w-[60%] left-[50%] top-[50%] -translate-x-[50%] -translate-y-[50%]"/>
                 </div>
 
-
-                <div className="max-w-[500px] flex flex-col gap-[40px] p-[4%]">
-                    <p className="text-white font-bold text-[40px] text-left wrap:text-center">Privacy first, always.</p>
-                    <p className="text-white text-[24px] text-left wrap:text-center">We&apos;ll never ask you to login to your Instagram account or enter any personal information. Ever.</p>
+                <div className="max-w-[500px] flex flex-col gap-10 p-[4%]">
+                    <p className="text-white font-bold text-[2.5rem] text-left wrap:text-center">Privacy first, always.</p>
+                    <p className="text-white text-2xl text-left wrap:text-center">We&apos;ll never ask you to login to your Instagram account or enter any personal information. Ever.</p>
                 </div>
             </div>
         </div>
@@ -136,9 +132,9 @@ export default function Home() {
               </div>
 
               <div className="flex gap-[18px]">
-                  <img src="/email.svg" alt="" className="w-[24px]"/>
-                  <img src="/instagram.svg" alt="" className="w-[24px]"/>
-                  <img src="/linkedin.svg" alt="" className="w-[24px]"/>
+                  <img src="/email.svg" alt="" className="w-6"/>
+                  <img src="/instagram.svg" alt="" className="w-6"/>
+                  <img src="/linkedin.svg" alt="" className="w-6"/>
               </div>
             </div>
           </div>

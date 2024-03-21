@@ -1,6 +1,5 @@
 import type { Config } from "tailwindcss";
 
-
 const config: Config = {
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
@@ -13,14 +12,17 @@ const config: Config = {
       'sm' : '640px',
       'hero-text' : '675px',
       'mobile' : {'max' : '400px'}
-    }
-    ,
+    },
     extend: {
       backgroundImage: {
         'faq-bg': "url('/public/FAQ-bg.png')"
-      }
+      },
+      fontSize: {
+        'xxs': '8px',
+      },
     },
   },
   plugins: [],
 };
+
 export default config;

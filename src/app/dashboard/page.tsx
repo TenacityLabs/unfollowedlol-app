@@ -20,7 +20,7 @@ const ChartDescriptor:(...props:any[]) => JSX.Element =
   ${active ? "opacity-1 translate-x-0" : "opacity-0 translate-x-12"}`}>
     <span className="text-neutral-500">{metric}</span>
     {!loading ? <span className="text-neutral-700 text-2xl font-bold">{value}</span>
-    : <div className={`${styles['loading-card-flex']} w-[6rem] h-[2rem]`}/>}
+    : <div className={`${styles['loading-card-flex']} w-24 h-8`}/>}
     {!loading ? <div className="mt-1 flex flex-row gap-2 items-center text-neutral-500">
       <div className={`flex flex-row gap-1 ${percent != 0 && (percent > 0 ? "text-green-500" : "text-red-500")} 
       items-center`}>
@@ -88,7 +88,7 @@ export default function Dashboard() {
               <div className="tracking-widest text-nowrap">
                 <span>{loadPercent}%</span> COMPLETE
               </div>
-              <div className={`h-[6px] bg-gradient-to-r ${styles['analyze-loadingbar']}
+              <div className={`h-1.5 bg-gradient-to-r ${styles['analyze-loadingbar']}
               rounded-full transition-all duration-500 ease-in`}
               style={{width: `${loadPercent}%`}}/>
             </div>
@@ -158,28 +158,28 @@ export default function Dashboard() {
                 {ChartDescriptorMemo(selected == 1, "Likes", "403.2k", -12.0, "SINCE LAST YEAR", loading)}
                 {ChartDescriptorMemo(selected == 2, "Comments", "980", 0, "SINCE LAST YEAR", loading)}
                 <div className="flex flex-row gap-2 mt-2 items-center">
-                  <button className={`flex flex-row items-center gap-2 border-[1px] border-neutral-500/[0.5] 
+                  <button className={`flex flex-row items-center gap-2 border border-neutral-500/[0.5] 
                   rounded-xl py-0.5 px-4 hover:border-indigo-500 text-neutral-500 transition-all duration-300 z-10
                   ${selected == 0 && 'bg-indigo-50 border-indigo-500'}`}
                   onClick={() => {setSelected(0)}}>
                     <div className="w-3 h-3 rounded-full bg-indigo-500"/>
                     Followers
                   </button>
-                  <button className={`flex flex-row items-center gap-2 border-[1px] border-neutral-500/[0.5] 
+                  <button className={`flex flex-row items-center gap-2 border border-neutral-500/[0.5] 
                   rounded-xl py-0.5 px-4 hover:border-amber-500 text-neutral-500 transition-all duration-300 z-10
                   ${selected == 1 && 'bg-amber-50 border-amber-500'}`}
                   onClick={() => {setSelected(1)}}>
                     <div className="w-3 h-3 rounded-full bg-amber-500"/>
                     Likes
                   </button>
-                  <button className={`flex flex-row items-center gap-2 border-[1px] border-neutral-500/[0.5] 
+                  <button className={`flex flex-row items-center gap-2 border border-neutral-500/[0.5] 
                   rounded-xl py-0.5 px-4 hover:border-fuchsia-500 text-neutral-500 transition-all duration-300 z-10
                   ${selected == 2 && 'bg-fuchsia-50 border-fuchsia-500'}`}
                   onClick={() => {setSelected(2)}}>
                     <div className="w-3 h-3 rounded-full bg-fuchsia-500"/>
                     Comments
                   </button>
-                  <button className={`flex flex-row items-center gap-2 border-[1px] border-neutral-500/[0.5] 
+                  <button className={`flex flex-row items-center gap-2 border border-neutral-500/[0.5] 
                   rounded-full py-1 px-5 text-neutral-500 bg-indigo-100 z-10`}>
                     Last 12 months
                     <IoIosArrowDown/>
@@ -218,28 +218,28 @@ export default function Dashboard() {
               <span className="text-neutral-500">I don't follow back</span>
               <div className="flex flex-row mt-2 items-center">
                 {!loading ? <span className="text-neutral-700 text-2xl font-bold">123</span>
-                : <div className={`${styles['loading-card-flex']} w-[4rem] h-[2.5rem]`}/>}
+                : <div className={`${styles['loading-card-flex']} w-16 h-10`}/>}
                 {!loading ? <div className="ml-5 flex flex-col text-neutral-500">
                   <div className="flex flex-row gap-1 text-green-500 items-center">
                     <BiSolidRightTopArrowCircle/> <span className="font-bold">7.3%</span>
                   </div>
                   <span className="text-[0.9rem]">SINCE LAST WEEK</span>
                 </div>
-                : <div className={`${styles['loading-card-flex']} ml-3 w-[6rem] h-[2.5rem]`}/>}
+                : <div className={`${styles['loading-card-flex']} ml-3 w-24 h-10`}/>}
               </div>
             </section>
             <section className={`${styles['card']} flex flex-col`}>
               <span className="text-neutral-500">Don't follow me back</span>
               <div className="flex flex-row mt-2 items-center">
                 {!loading ? <span className="text-neutral-700 text-2xl font-bold">42</span>
-                : <div className={`${styles['loading-card-flex']} w-[4rem] h-[2.5rem]`}/>}
+                : <div className={`${styles['loading-card-flex']} w-16 h-10`}/>}
                 {!loading ? <div className="ml-5 flex flex-col text-neutral-500">
                   <div className="flex flex-row gap-1 text-red-500 items-center">
                     <BiSolidRightTopArrowCircle/> <span className="font-bold">7.3%</span>
                   </div>
                   <span className="text-[0.9rem]">SINCE LAST WEEK</span>
                 </div>
-                : <div className={`${styles['loading-card-flex']} ml-3 w-[6rem] h-[2.5rem]`}/>}
+                : <div className={`${styles['loading-card-flex']} ml-3 w-24 h-10`}/>}
               </div>
             </section>
           </div>
