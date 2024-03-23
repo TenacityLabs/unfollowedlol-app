@@ -95,7 +95,7 @@ export default function Dashboard() {
           </div>
           :
           <div className="flex flex-col w-full">
-            <span className="text-[2.15rem]">Mike's Dashboard</span>
+            <span className="text-[2.15rem]">Mike&apos;s Dashboard</span>
             <div className="flex flex-row gap-2 items-center">
               <span className="text-[1rem]"> REFRESHED 1 MINUTE AGO </span>
               <button onClick={() => {setLoadPercent(0)}}
@@ -215,7 +215,7 @@ export default function Dashboard() {
               </div>
             </section>
             <section className={`${styles['card']} flex flex-col`}>
-              <span className="text-neutral-500">I don't follow back</span>
+              <span className="text-neutral-500">I don&apos;t follow back</span>
               <div className="flex flex-row mt-2 items-center">
                 {!loading ? <span className="text-neutral-700 text-2xl font-bold">123</span>
                 : <div className={`${styles['loading-card-flex']} w-16 h-10`}/>}
@@ -229,7 +229,7 @@ export default function Dashboard() {
               </div>
             </section>
             <section className={`${styles['card']} flex flex-col`}>
-              <span className="text-neutral-500">Don't follow me back</span>
+              <span className="text-neutral-500">Don&apos;t follow me back</span>
               <div className="flex flex-row mt-2 items-center">
                 {!loading ? <span className="text-neutral-700 text-2xl font-bold">42</span>
                 : <div className={`${styles['loading-card-flex']} w-16 h-10`}/>}

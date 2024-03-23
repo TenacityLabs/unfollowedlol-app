@@ -47,7 +47,7 @@ export default function Home() {
           <div className= "flex-1 flex justify-center items-center z-10">
             <div className="w-full flex flex-col gap-8 items-center ">
                 <div className="flex flex-col gap-2 items-center">
-                    <p className="max-w-3xl h-56 text-wrap text-5xl hero-text:text-8xl text-center font-bold leading-[115%] bg-gradient-to-b from-[#FFFFFF] to-[#ffffff86] text-transparent bg-clip-text">Discover who's unfollowing you</p>
+                    <p className="max-w-3xl h-56 text-wrap text-5xl hero-text:text-8xl text-center font-bold leading-[115%] bg-gradient-to-b from-[#FFFFFF] to-[#ffffff86] text-transparent bg-clip-text">Discover who&apos;s unfollowing you</p>
                     <p className="max-w-lg text-wrap text-base sm:text-xl text-center bg-gradient-to-b from-[#FFFFFF] to-[#ffffff86] text-transparent bg-clip-text">Unlock the secrets of your social circle, without compromising your account&apos;s safety.</p>
                 </div>
                 <button className="text-white text-center text-base bg-gradient-to-r to-[#4D6DF4] via-[#AB33FA] from-[#FFA800] pt-4 pb-4 pl-7 pr-7 rounded-xl">

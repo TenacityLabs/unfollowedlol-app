@@ -60,8 +60,8 @@ export default function UserDemo(){
                     </div>
                 </div>
                 <div className="flex-col flex gap-10 items-center p-[4%]">
-                    <p className="text-white text-[2.5rem] font-bold leading-[110%] max-w-[500px] text-left wrap:text-center">Keep an eye on other profiles’ follower activity</p>
-                    <p className="text-white text-2xl text-left wrap:text-center">See who’s following your friends (and exes 👀)!</p>
+                    <p className="text-white text-[2.5rem] font-bold leading-[110%] max-w-[500px] text-left wrap:text-center">Keep an eye on other profiles&apos; follower activity</p>
+                    <p className="text-white text-2xl text-left wrap:text-center">See who&apos;s following your friends (and exes 👀)!</p>
                 </div>
             </div>
         </div>
