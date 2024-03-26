@@ -1,5 +1,5 @@
 .top-gradient{
-    background: radial-gradient(circle at 70% 100%, rgba(179, 87, 155, 0.75) 0%, 
+    background: radial-gradient(circle at 70% 100%, rgba(179, 87, 155, 1) 0%, 
     rgba(109, 158, 199, 0.6) 70%),
     radial-gradient(circle at 20% 70%, rgba(153, 137, 198, 0.9) 0%, 
     rgba(126, 183, 230, 0.5) 50%),
@@ -41,7 +41,7 @@ waver{
 }
 
 .card {
-    background-image: linear-gradient(to bottom, #ffffff, #f9fafb);
+    background-image: linear-gradient(to bottom, #ffffffe8, #f9fafbe8);
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
     border-radius: 0.75rem;
     padding: 1.75rem;

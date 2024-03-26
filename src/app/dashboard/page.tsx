@@ -1,17 +1,21 @@
 "use client"
 
-import { LuMenuSquare } from "react-icons/lu";
+import { LuMenuSquare, LuSearch, LuSettings } from "react-icons/lu";
 import { IoReload } from "react-icons/io5";
 import { IoIosArrowDown } from "react-icons/io";
 import { BsPersonFillUp } from "react-icons/bs";
 import { BsPersonFillDown } from "react-icons/bs";
 import { BiSolidRightTopArrowCircle } from "react-icons/bi";
 import { BiSolidRightDownArrowCircle } from "react-icons/bi";
+import { BiLogOut } from "react-icons/bi";
+import { SlQuestion } from "react-icons/sl";
+import Image from "next/image";
 
 import LineChart from "@/components/data-visualization/LineChart";
 
 import styles from "./Dashboard.module.css"
 import { useEffect, useRef, useMemo, useState } from "react";
+import { FaArrowRight } from "react-icons/fa";
 
 const ChartDescriptor:(...props:any[]) => JSX.Element = 
 (active: boolean, metric:string, value:number|string, percent:number, interval:string, loading:boolean) => {
@@ -44,11 +48,27 @@ const ChartMain:(...props:any[]) => JSX.Element =
   )
 }
 
+const sampleFollower = {name: "Donald Trump", handle: "@realDonaldTrump", posts: 578, followers: 1542, following: 89,
+followString: "2 days ago", pfp: "/assets/dtrump.jpeg"}
+
+const sampleFollowing = {name: "Ye Kelly", handle: "@BillCosby__", posts: 7, followers: "1.2M", following: 400,
+followString: "3 days ago", pfp: "/assets/ye.jpeg"}
+
 export default function Dashboard() {
   //is this just visual?
   const [loadPercent, setLoadPercent] = useState<number>(0);
   const [loading, setLoading] = useState<boolean>(true);
+  const [socialSelected, setSocialSelected] = useState<number>(0);
   const [selected, setSelected] = useState<number>(0);
+
+  const followers = [
+    sampleFollower, sampleFollower, sampleFollower, sampleFollower, sampleFollower, sampleFollower, sampleFollower, sampleFollower, sampleFollower, sampleFollower
+  ]
+
+  const followings = [
+    sampleFollowing, sampleFollowing, sampleFollowing, sampleFollowing, sampleFollowing, sampleFollowing, sampleFollowing, sampleFollowing, sampleFollowing, sampleFollowing, 
+  ]
+
 
   useEffect(() => {
     const min = 8;
@@ -63,6 +83,90 @@ export default function Dashboard() {
     else setLoading(false);
   }, [loadPercent])
 
+  const FollowersMemo = useMemo(() => {
+    return followers.map((item, key) => {
+      return(
+        <div key={key} className="grid py-4 border-t border-t-neutral-300/[0.3]"
+        style={{
+          gridTemplateColumns: "35% 12% 12% 12% 20% auto"
+        }}>
+          <div className="flex flex-row gap-4">
+            <Image src={item.pfp}
+            alt="pfp"
+            width={300}
+            height={300}
+            className="w-16 h-16 rounded-full"/>
+            <div className="flex flex-col justify-center">
+              <span className="text-xl text-neutral-700 font-semibold">{item.name}</span>
+              <span className="text-neutral-400 tracking-wider">{item.handle}</span>
+            </div>
+          </div>
+          <div className="flex flex-col justify-center">
+            <span className="text-xl text-neutral-700 font-semibold">{item.posts}</span>
+            <span className="text-neutral-400 tracking-wider">Posts</span>
+          </div>
+          <div className="flex flex-col justify-center">
+            <span className="text-xl text-neutral-700 font-semibold">{item.followers}</span>
+            <span className="text-neutral-400 tracking-wider">Followers</span>
+          </div>
+          <div className="flex flex-col justify-center">
+            <span className="text-xl text-neutral-700 font-semibold">{item.following}</span>
+            <span className="text-neutral-400 tracking-wider">Following</span>
+          </div>
+          <div className="flex flex-col justify-center">
+            <span className="text-xl text-indigo-500 font-semibold">{item.followString}</span>
+            <span className="text-neutral-400 tracking-wider">Followed you</span>
+          </div>
+          <button className="flex items-center justify-center text-neutral-700 hover:text-neutral-400 transition-colors">
+            <FaArrowRight/>
+          </button>
+        </div>
+      )
+    })
+  }, [followers])
+
+  const FollowingsMemo = useMemo(() => {
+    return followings.map((item, key) => {
+      return(
+        <div key={key} className="grid py-4 border-t border-t-neutral-300/[0.3]"
+        style={{
+          gridTemplateColumns: "35% 12% 12% 12% 20% auto"
+        }}>
+          <div className="flex flex-row gap-4">
+            <Image src={item.pfp}
+            alt="pfp"
+            width={300}
+            height={300}
+            className="w-16 h-16 rounded-full"/>
+            <div className="flex flex-col justify-center">
+              <span className="text-xl text-neutral-700 font-semibold">{item.name}</span>
+              <span className="text-neutral-400 tracking-wider">{item.handle}</span>
+            </div>
+          </div>
+          <div className="flex flex-col justify-center">
+            <span className="text-xl text-neutral-700 font-semibold">{item.posts}</span>
+            <span className="text-neutral-400 tracking-wider">Posts</span>
+          </div>
+          <div className="flex flex-col justify-center">
+            <span className="text-xl text-neutral-700 font-semibold">{item.followers}</span>
+            <span className="text-neutral-400 tracking-wider">Followers</span>
+          </div>
+          <div className="flex flex-col justify-center">
+            <span className="text-xl text-neutral-700 font-semibold">{item.following}</span>
+            <span className="text-neutral-400 tracking-wider">Following</span>
+          </div>
+          <div className="flex flex-col justify-center">
+            <span className="text-xl text-rose-500 font-semibold">{item.followString}</span>
+            <span className="text-neutral-400 tracking-wider">You followed</span>
+          </div>
+          <button className="flex items-center justify-center text-neutral-700 hover:text-neutral-400 transition-colors">
+            <FaArrowRight/>
+          </button>
+        </div>
+      )
+    })
+  }, [followings])
+
   const ChartDescriptorMemo = useMemo(() => ChartDescriptor, [selected])
   const ChartMainMemo = useMemo(() => ChartMain, [selected])
 
@@ -70,11 +174,24 @@ export default function Dashboard() {
     <main className="relative overflow-y-scroll">
       <div className={`${styles['top-gradient']} rounded-b-xl text-white px-[3%] pt-4 pb-28
       flex flex-col`}>
-        <div className="flex flex-row gap-3 items-center">
-          <LuMenuSquare/>
-          <span>unfollowed.lol</span>
-          <span className="opacity-[0.4]">/</span>
-          <span>mikemonroe</span>
+        <div className="flex flex-row justify-between items-center">
+          <div className="flex flex-row gap-3 items-center">
+            <LuMenuSquare/>
+            <span>unfollowed.lol</span>
+            <span className="opacity-[0.4]">/</span>
+            <span>mikemonroe</span>
+          </div>
+          <div className="flex flex-row gap-3 items-center text-xl">
+            <button>
+              <LuSettings/>
+            </button>
+            <button>
+              <SlQuestion/>
+            </button>
+            <button>
+              <BiLogOut/>
+            </button>
+          </div>
         </div>
         <div className={`flex font-semibold mt-8 tracking-wider h-[5rem] items-end`}>
           {loading ?
@@ -152,6 +269,37 @@ export default function Dashboard() {
               </section>
             </div>
             <section className={`${styles['card']} flex flex-col h-full`}>
+              <span className="text-neutral-500">My Social Circle</span>
+              <div className="flex flex-row justify-between items-center">
+                <div className="flex flex-row gap-2 mt-2">
+                  <button className={`flex flex-row items-center gap-2 border border-neutral-500/[0.5] 
+                    rounded-xl py-0.5 px-4 hover:border-indigo-500 text-neutral-500 transition-all duration-300 z-10
+                    ${socialSelected == 0 && 'bg-indigo-50 border-indigo-500'}`}
+                    onClick={() => {setSocialSelected(0)}}>
+                      <div className="w-3 h-3 rounded-full bg-indigo-500"/>
+                      Followers
+                  </button>
+                  <button className={`flex flex-row items-center gap-2 border border-neutral-500/[0.5] 
+                    rounded-xl py-0.5 px-4 hover:border-rose-500 text-neutral-500 transition-all duration-300 z-10
+                    ${socialSelected == 1 && 'bg-rose-50 border-rose-500'}`}
+                    onClick={() => {setSocialSelected(1)}}>
+                      <div className="w-3 h-3 rounded-full bg-rose-500"/>
+                      Following
+                  </button>
+                </div>
+                <div className="flex flex-row items-center gap-3">
+                  <LuSearch/>
+                  <input 
+                  placeholder="Search..."
+                  className="outline-none border-b border-neutral-500/[0.5]"/>
+                </div>
+              </div>
+              <div className="flex flex-col w-full mt-4">
+                {socialSelected === 0 ? 
+                FollowersMemo : FollowingsMemo}
+              </div>
+            </section>
+            {/* <section className={`${styles['card']} flex flex-col h-full`}>
               <div className="flex flex-row justify-between items-start h-[5rem]">
                 <div></div>
                 {ChartDescriptorMemo(selected == 0, "Followers", "12.7k", 10.6, "SINCE LAST YEAR", loading)}
@@ -186,12 +334,12 @@ export default function Dashboard() {
                   </button>
                 </div>
               </div>
-              <div className="flex relative w-full mt-4 h-[calc(30vw_+_1rem)]">
+              {!loading && <div className="flex relative w-full mt-4 h-[calc(30vw_+_1rem)]">
                 {ChartMainMemo(selected == 0, [], "Followers", "#6365f1", "#9193eb", "points-chart-0")}
                 {ChartMainMemo(selected == 1, [], "Likes", "#f59e0b", "#f2b855", "points-chart-1")}
                 {ChartMainMemo(selected == 2, [], "Comments", "#d846ef", "#e18eed", "points-chart-2")}
-              </div>
-            </section>
+              </div>}
+            </section> */}
           </div>
           <div className="flex flex-col gap-4">
             <section className={`${styles['card']} flex flex-col`}>
