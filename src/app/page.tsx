@@ -1,5 +1,5 @@
 'use client'
-import Header from "@/components/home/Header";
+import Header, { scrollToFAQ, scrollToFeatures } from "@/components/home/Header";
 import StatusDemo from "@/components/home/StatusDemo";
 import UserDemo from "@/components/home/UserDemo";
 import "./index.css"
@@ -44,7 +44,7 @@ export default function Home() {
 
 
           <Header/>
-          <div className= "flex-1 flex justify-center items-center z-10">
+          <div className= "flex-1 flex justify-center items-center z-10" >
             <div className="w-full flex flex-col gap-8 items-center ">
                 <div className="flex flex-col gap-2 items-center">
                     <p className="max-w-3xl h-56 text-wrap text-5xl hero-text:text-8xl text-center font-bold leading-[115%] bg-gradient-to-b from-[#FFFFFF] to-[#ffffff86] text-transparent bg-clip-text">Discover who&apos;s unfollowing you</p>
@@ -113,13 +113,13 @@ export default function Home() {
             <div className="sm:h-20 p-3 sm:p-0 justify-items-center items-center flex-col flex sm:flex-row flex-shrink-0 justify-around gap-6 sm:gap-0">
               <p className="text-white font-bold text-3xl" ><span className="text-[#7993FF]">un</span>followed.lol</p>
               <div className="flex sm:flex-row flex-col gap-6 sm:gap-5 items-center">
-                  <p className="text-white text-lg opacity-50 hover:opacity-100 transition-opacity duration-30 cursor-pointer">
+                  {/* <p className="text-white text-lg opacity-50 hover:opacity-100 transition-opacity duration-30 cursor-pointer">
                       About
-                  </p>
-                  <p className="text-white text-lg opacity-50 hover:opacity-100 transition-opacity duration-30 cursor-pointer">
+                  </p> */}
+                  <p onClick={scrollToFeatures}className="text-white text-lg opacity-50 hover:opacity-100 transition-opacity duration-30 cursor-pointer">
                       Features
                   </p>
-                  <p className="text-white text-lg opacity-50 hover:opacity-100 transition-opacity duration-30 cursor-pointer">
+                  <p onClick={scrollToFAQ} className="text-white text-lg opacity-50 hover:opacity-100 transition-opacity duration-30 cursor-pointer">
                       FAQ
                   </p>
                   

@@ -39,7 +39,7 @@ export default function StatusDemo(){
                         <p className="text-white text-4xl font-bold leading-[110%] text-left wrap:text-center p-8">Track your profile&apos;s followers and unfollowers</p>
                     </div>
                 </div>
-                <div>
+                <div id="features">
                     <div className="max-h-[50rem] max-w-[27rem] bg-white rounded-[20px] p-8 flex flex-col gap-5 self-end wrap:w-screen">
                         <p className="text-[#000F4E] text-3xl font-bold"><span className="text-[#7993FF]">Un</span>followed.lol</p>
                         
