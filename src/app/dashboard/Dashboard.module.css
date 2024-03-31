@@ -1,10 +1,11 @@
 .top-gradient{
-    background: radial-gradient(circle at 70% 100%, rgba(179, 87, 155, 1) 0%, 
-    rgba(109, 158, 199, 0.6) 70%),
-    radial-gradient(circle at 20% 70%, rgba(153, 137, 198, 0.9) 0%, 
-    rgba(126, 183, 230, 0.5) 50%),
-    radial-gradient(circle at 40% 20%, rgba(238, 234, 248, 0.3) 0%, 
-    rgba(212, 228, 242, 0.3) 70%);
+    background: 
+    radial-gradient(circle at 20% 20%, rgba(215, 147, 95, 0.5) 0%, 
+    rgba(126, 183, 230, 0.05) 30%),
+    radial-gradient(circle at 75% 140%, rgba(149, 80, 186, 0.5) 0%, 
+    rgba(109, 158, 199, 0) 55%),
+    radial-gradient(circle at 40% 20%, rgba(0, 0, 0, 1) 0%, 
+    rgba(0, 0, 0, 1) 70%);
 }
 
 .analyze-loadingbar{
@@ -71,4 +72,8 @@ waver{
     box-shadow: 0 4px 6px -1px var(--shadow-color, rgba(0, 0, 0, 0.1)), 0 2px 4px -1px var(--shadow-color, rgba(0, 0, 0, 0.06));
     border-radius: 0.75rem;
 }
-  
+
+.ig-gradient{
+    color:white;
+    background: linear-gradient(to right, #FFA800 0%, #AB33FA 30%, #4D6DF4 100%)
+}
