@@ -24,7 +24,7 @@ export default function UnprocessedDashboard({}){
                     </section>
                 </div>
                 <div className="flex items-center justify-center">
-                    <button className={`${styles['ig-gradient']} text-xl tracking-wide flex flex-row items-center gap-3 px-10 py-3 rounded`}>
+                    <button className={`rainbow-button text-xl tracking-wide flex flex-row items-center gap-3 px-10 py-3 rounded`}>
                         <BsInstagram/>
                         Go To Instagram
                     </button>

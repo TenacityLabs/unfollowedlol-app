@@ -13,7 +13,7 @@ export default function Dashboard() {
   //is this just visual?
   const [loadPercent, setLoadPercent] = useState<number>(0);
   const [loading, setLoading] = useState<boolean>(true);
-  const [processed, setProcessed] = useState<boolean>(false);
+  const [processed, setProcessed] = useState<boolean>(true);
 
   useEffect(() => {
     const min = 8;
@@ -26,12 +26,11 @@ export default function Dashboard() {
       }, 550)
     }
     else setLoading(false);
-    setProcessed(false)
   }, [loadPercent])
 
   useEffect(() => {
-    if(localStorage.getItem("unfollowed")){
-      
+    if(!localStorage.getItem("unfollowed")){
+      setProcessed(false)
     }
   }, [])
 

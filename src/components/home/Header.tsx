@@ -1,6 +1,8 @@
 "use client";
 
-export     const scrollToFAQ = (event: any) => {
+import Link from "next/link";
+
+export const scrollToFAQ = (event: any) => {
     event.preventDefault(); 
     const element = document.getElementById("faq");
     if (element) {
@@ -38,10 +40,10 @@ const Header = () => {
                     FAQ
                 </p>
             </div>
-            <button className="order-1 sm:order-2 text-white text-base bg-gradient-to-r to-[#4D6DF4] via-[#AB33FA] from-[#FFA800] py-3 px-5 rounded-xl">
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLSff2yOlenE692GeMZG9rc9HEL7PH_kVUim5-uL4sB_QAkFN4w/viewform">
-                Join Waitlist
-            </a>
+            <button className="order-1 sm:order-2 text-base rainbow-button py-3 px-5 rounded-xl">
+                <Link href="https://docs.google.com/forms/d/e/1FAIpQLSff2yOlenE692GeMZG9rc9HEL7PH_kVUim5-uL4sB_QAkFN4w/viewform">
+                    Join Waitlist
+                </Link>
             </button>
         </div>
      );

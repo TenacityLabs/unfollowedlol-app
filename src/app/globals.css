@@ -4,4 +4,20 @@
 
 body::-webkit-scrollbar {
     display: none; /* Safari and Chrome */
-  }
+}
+
+.rainbow-button{
+    color:white;
+    background: linear-gradient(to right, #d09010 0%, #AB33FA 40%, #4D6DF4 100%);
+    background-position: 0 0;
+    background-size: 175% 100%;
+    background-repeat: repeat-x;
+    transition-property: all;
+    transition-duration: 300ms;
+    /* box-shadow: 0px 0px 0px rgba(255, 255, 255, 0.5); */
+}
+
+.rainbow-button:hover{
+    background-position: 100% 0;
+    /* box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.5); */
+}

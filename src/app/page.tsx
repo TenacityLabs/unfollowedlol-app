@@ -1,4 +1,5 @@
 'use client'
+import Link from "next/link";
 import Header, { scrollToFAQ, scrollToFeatures } from "@/components/home/Header";
 import StatusDemo from "@/components/home/StatusDemo";
 import UserDemo from "@/components/home/UserDemo";
@@ -50,10 +51,10 @@ export default function Home() {
                     <p className="max-w-3xl h-56 text-wrap text-5xl hero-text:text-8xl text-center font-bold leading-[115%] bg-gradient-to-b from-[#FFFFFF] to-[#ffffff86] text-transparent bg-clip-text">Discover who&apos;s unfollowing you</p>
                     <p className="max-w-lg text-wrap text-base sm:text-xl text-center bg-gradient-to-b from-[#FFFFFF] to-[#ffffff86] text-transparent bg-clip-text">Unlock the secrets of your social circle, without compromising your account&apos;s safety.</p>
                 </div>
-                <button className="text-white text-center text-base bg-gradient-to-r to-[#4D6DF4] via-[#AB33FA] from-[#FFA800] pt-4 pb-4 pl-7 pr-7 rounded-xl">
-                  <a href="https://docs.google.com/forms/d/e/1FAIpQLSff2yOlenE692GeMZG9rc9HEL7PH_kVUim5-uL4sB_QAkFN4w/viewform">
-                  Join Waitlist
-                  </a>
+                <button className="relative rounded-xl overflow-hidden rainbow-button text-center text-base pt-4 pb-4 pl-7 pr-7">
+                  <Link href="https://docs.google.com/forms/d/e/1FAIpQLSff2yOlenE692GeMZG9rc9HEL7PH_kVUim5-uL4sB_QAkFN4w/viewform">
+                    Join Waitlist
+                  </Link>
                 </button>
             </div>
         </div>
@@ -124,9 +125,9 @@ export default function Home() {
                   </p>
                   
                   <button className="text-white text-xs py-2 px-5 rounded-xl border-white border">
-                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSff2yOlenE692GeMZG9rc9HEL7PH_kVUim5-uL4sB_QAkFN4w/viewform">
+                    <Link href="https://docs.google.com/forms/d/e/1FAIpQLSff2yOlenE692GeMZG9rc9HEL7PH_kVUim5-uL4sB_QAkFN4w/viewform">
                       Join Waitlist
-                    </a>
+                    </Link>
                   </button>
                   
               </div>

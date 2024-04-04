@@ -1,0 +1,9 @@
+.top-gradient{
+    background: 
+    radial-gradient(circle at 20% 20%, rgba(215, 147, 95, 0.5) 0%, 
+    rgba(126, 183, 230, 0.05) 30%),
+    radial-gradient(circle at 75% 140%, rgba(149, 80, 186, 0.5) 0%, 
+    rgba(109, 158, 199, 0) 55%),
+    radial-gradient(circle at 40% 20%, rgba(0, 0, 0, 1) 0%, 
+    rgba(0, 0, 0, 1) 70%);
+}
