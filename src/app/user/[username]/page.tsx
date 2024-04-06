@@ -100,7 +100,7 @@ export default function Dashboard() {
               <LuMenuSquare />
               <span>unfollowed.lol</span>
               <span className="opacity-[0.4]">/</span>
-              <span>mikemonroe</span>
+              <span>{params.username}</span>
             </div>
             <div className="flex flex-row gap-3 items-center text-xl">
               <button>
