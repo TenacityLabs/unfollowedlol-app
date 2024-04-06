@@ -3,154 +3,68 @@ import { BsPersonFillDown, BsPersonFillUp } from "react-icons/bs"
 import { LuSearch } from "react-icons/lu"
 import { FaArrowRight } from "react-icons/fa"
 import { useState, useEffect, useMemo } from "react"
-import styles from  "@/app/dashboard/[username]/Dashboard.module.css"
+import styles from  "@/app/user/[username]/Dashboard.module.css"
 import Image from "next/image"
-
-const sampleFollower = {
-    name: "Donald Trump", handle: "@realDonaldTrump", posts: 578, followers: 1542, following: 89,
-    followString: "2 days ago", pfp: "/assets/dtrump.jpeg"
-}
-
-const sampleFollowing = {
-    name: "Ye Kelly", handle: "@BillCosby__", posts: 7, followers: "1.2M", following: 400,
-    followString: "3 days ago", pfp: "/assets/ye.jpeg"
-}
-
-// const ChartDescriptor: (...props: any[]) => JSX.Element =
-//     (active: boolean, metric: string, value: number | string, percent: number, interval: string, loading: boolean) => {
-//         return (
-//             <div className={`absolute flex flex-col transition-all duration-500 ease-out
-//   ${active ? "opacity-1 translate-x-0" : "opacity-0 translate-x-12"}`}>
-//                 <span className="text-neutral-500">{metric}</span>
-//                 {!loading ? <span className="text-neutral-700 text-2xl font-bold">{value}</span>
-//                     : <div className={`${styles['loading-card-flex']} w-24 h-8`} />}
-//                 {!loading ? <div className="mt-1 flex flex-row gap-2 items-center text-neutral-500">
-//                     <div className={`flex flex-row gap-1 ${percent != 0 && (percent > 0 ? "text-green-500" : "text-red-500")} 
-//       items-center`}>
-//                         {percent != 0 && (percent > 0 ? <BiSolidRightTopArrowCircle />
-//                             : <BiSolidRightDownArrowCircle />)} <span className="font-bold">{percent}%</span>
-//                     </div>
-//                     <span className="text-[0.9rem]">{interval}</span>
-//                 </div>
-//                     : <div className={`${styles['loading-card-flex']} mt-2 w-[10rem] h-[1.5rem]`} />}
-//             </div>
-//         )
-//     }
-
-// const ChartMain: (...props: any[]) => JSX.Element =
-//     (active: boolean, data: any, metric: string, color1: string, color2: string, id: string) => {
-//         return (
-//             <div className={`absolute transition-all duration-500 ease-out w-full origin-bottom
-//     ${active ? "opacity-1 scale-y-100" : "opacity-0 scale-y-0"}`}>
-//                 <LineChart chartData={data} metric={metric} color1={color1} color2={color2} elementId={id} />
-//             </div>
-//         )
-//     }
+import Link from "next/link"
 
 interface props {
     loading: boolean,
-    setLoading: Function
+    data:any,
 }
 
-export default function UserDashboard({ loading, setLoading }: props) {
+export default function UserDashboard({ loading, data }: props) {
 
     const [socialSelected, setSocialSelected] = useState<number>(0);
     //const [selected, setSelected] = useState<number>(0);
 
-    const followers = [
-        sampleFollower, sampleFollower, sampleFollower, sampleFollower, sampleFollower, sampleFollower, sampleFollower, sampleFollower, sampleFollower, sampleFollower
-    ]
-
-    const followings = [
-        sampleFollowing, sampleFollowing, sampleFollowing, sampleFollowing, sampleFollowing, sampleFollowing, sampleFollowing, sampleFollowing, sampleFollowing, sampleFollowing,
-    ]
-
     const FollowersMemo = useMemo(() => {
-        return followers.map((item, key) => {
+        if(!data) return <></>
+        return data.followers.map((item:any, key:number) => {
             return (
-                <div key={key} className="grid py-4 border-t border-t-neutral-300/[0.3]"
-                    style={{
-                        gridTemplateColumns: "35% 12% 12% 12% 20% auto"
-                    }}>
-                    <div className="flex flex-row gap-4">
-                        <Image src={item.pfp}
+                <div key={key} className="flex flex-row justify-between w-full py-4 border-t border-t-neutral-300/[0.3] items-center">
+                    <div className="flex flex-row gap-4 items-center">
+                        <Image src={item?.avatar_url}
                             alt="pfp"
-                            width={300}
-                            height={300}
-                            className="w-16 h-16 rounded-full" />
-                        <div className="flex flex-col justify-center">
-                            <span className="text-xl text-neutral-700 font-semibold">{item.name}</span>
-                            <span className="text-neutral-400 tracking-wider">{item.handle}</span>
+                            width={200}
+                            height={200}
+                            className="w-10 h-10 rounded-full" />
+                         <div className="flex flex-col justify-center">
+                            <span className="text-lg text-neutral-700 font-semibold">{item?.insta_name || item?.username}</span>
+                            <span className="text-neutral-400 tracking-wider text-sm">@{item?.username}</span>
                         </div>
                     </div>
-                    <div className="flex flex-col justify-center">
-                        <span className="text-xl text-neutral-700 font-semibold">{item.posts}</span>
-                        <span className="text-neutral-400 tracking-wider">Posts</span>
-                    </div>
-                    <div className="flex flex-col justify-center">
-                        <span className="text-xl text-neutral-700 font-semibold">{item.followers}</span>
-                        <span className="text-neutral-400 tracking-wider">Followers</span>
-                    </div>
-                    <div className="flex flex-col justify-center">
-                        <span className="text-xl text-neutral-700 font-semibold">{item.following}</span>
-                        <span className="text-neutral-400 tracking-wider">Following</span>
-                    </div>
-                    <div className="flex flex-col justify-center">
-                        <span className="text-xl text-indigo-500 font-semibold">{item.followString}</span>
-                        <span className="text-neutral-400 tracking-wider">Followed you</span>
-                    </div>
-                    <button className="flex items-center justify-center text-neutral-700 hover:text-neutral-400 transition-colors">
+                    <button className="flex items-center justify-center text-neutral-700 hover:text-neutral-400 transition-colors mr-8">
                         <FaArrowRight />
                     </button>
                 </div>
             )
         })
-    }, [followers])
+    }, [data])
 
     const FollowingsMemo = useMemo(() => {
-        return followings.map((item, key) => {
+        if(!data) return <></>
+        return data.following.map((item:any, key:number) => {
             return (
-                <div key={key} className="grid py-4 border-t border-t-neutral-300/[0.3]"
-                    style={{
-                        gridTemplateColumns: "35% 12% 12% 12% 20% auto"
-                    }}>
-                    <div className="flex flex-row gap-4">
-                        <Image src={item.pfp}
+                <div key={key} className="flex flex-row justify-between w-full py-4 border-t border-t-neutral-300/[0.3] items-center">
+                    <div className="flex flex-row gap-4 items-center">
+                        <Image src={item?.avatar_url}
                             alt="pfp"
-                            width={300}
-                            height={300}
-                            className="w-16 h-16 rounded-full" />
+                            width={200}
+                            height={200}
+                            className="w-10 h-10 rounded-full" />
                         <div className="flex flex-col justify-center">
-                            <span className="text-xl text-neutral-700 font-semibold">{item.name}</span>
-                            <span className="text-neutral-400 tracking-wider">{item.handle}</span>
+                            <span className="text-lg text-neutral-700 font-semibold">{item?.insta_name || item?.username}</span>
+                            <span className="text-neutral-400 tracking-wider text-sm">@{item?.username}</span>
                         </div>
                     </div>
-                    <div className="flex flex-col justify-center">
-                        <span className="text-xl text-neutral-700 font-semibold">{item.posts}</span>
-                        <span className="text-neutral-400 tracking-wider">Posts</span>
-                    </div>
-                    <div className="flex flex-col justify-center">
-                        <span className="text-xl text-neutral-700 font-semibold">{item.followers}</span>
-                        <span className="text-neutral-400 tracking-wider">Followers</span>
-                    </div>
-                    <div className="flex flex-col justify-center">
-                        <span className="text-xl text-neutral-700 font-semibold">{item.following}</span>
-                        <span className="text-neutral-400 tracking-wider">Following</span>
-                    </div>
-                    <div className="flex flex-col justify-center">
-                        <span className="text-xl text-rose-500 font-semibold">{item.followString}</span>
-                        <span className="text-neutral-400 tracking-wider">You followed</span>
-                    </div>
-                    <button className="flex items-center justify-center text-neutral-700 hover:text-neutral-400 transition-colors">
+                    <Link href={`/user/`}
+                    className="flex items-center justify-center text-neutral-700 hover:text-neutral-400 transition-colors mr-8">
                         <FaArrowRight />
-                    </button>
+                    </Link>
                 </div>
             )
         })
-    }, [followings])
-
-    // const ChartDescriptorMemo = useMemo(() => ChartDescriptor, [selected])
-    // const ChartMainMemo = useMemo(() => ChartMain, [selected])
+    }, [data])
 
     return (
         <div className="flex flex-col -mt-20 px-[3%]">
@@ -173,10 +87,6 @@ export default function UserDashboard({ loading, setLoading }: props) {
                                 </div>
                                     : <div className={`${styles['loading-card']} h-[1.5rem] mt-1`} />}
                             </div>
-                            {!loading ? <div className="flex items-center justify-center">
-                                <img src="/assets/demo-graph.png" className="h-full w-auto" />
-                            </div>
-                                : <div className={`${styles['loading-card']} h-full`} />}
                         </section>
                         <section className={`basis-1/2 ${styles['card']} grid`}
                             style={{ gridTemplateColumns: "65% auto" }}>
@@ -194,13 +104,9 @@ export default function UserDashboard({ loading, setLoading }: props) {
                                 </div>
                                     : <div className={`${styles['loading-card']} h-[1.5rem] mt-1`} />}
                             </div>
-                            {!loading ? <div className="flex items-center justify-center">
-                                <img src="/assets/demo-graph2.png" className="h-full w-auto" />
-                            </div>
-                                : <div className={`${styles['loading-card']} h-full`} />}
                         </section>
                     </div>
-                    <section className={`${styles['card']} flex flex-col h-full`}>
+                    <section className={`${styles['card']} flex flex-col overflow-y-scroll`}>
                         <span className="text-neutral-500">My Social Circle</span>
                         <div className="flex flex-row justify-between items-center">
                             <div className="flex flex-row gap-2 mt-2">
@@ -226,75 +132,30 @@ export default function UserDashboard({ loading, setLoading }: props) {
                                     className="outline-none border-b border-neutral-500/[0.5]" />
                             </div>
                         </div>
-                        {!loading ? <div className="flex flex-col w-full mt-4">
+                        {!loading ? <div className="flex flex-col w-full mt-4 max-h-[400px] overflow-y-scroll">
                             {socialSelected === 0 ?
                                 FollowersMemo : FollowingsMemo}
                         </div>
                         :
                         <div className={`${styles['loading-card']} h-full mt-4`} />}
                     </section>
-                    {/* <section className={`${styles['card']} flex flex-col h-full`}>
-                        <div className="flex flex-row justify-between items-start h-[5rem]">
-                            <div></div>
-                            {ChartDescriptorMemo(selected == 0, "Followers", "12.7k", 10.6, "SINCE LAST YEAR", loading)}
-                            {ChartDescriptorMemo(selected == 1, "Likes", "403.2k", -12.0, "SINCE LAST YEAR", loading)}
-                            {ChartDescriptorMemo(selected == 2, "Comments", "980", 0, "SINCE LAST YEAR", loading)}
-                            <div className="flex flex-row gap-2 mt-2 items-center">
-                                <button className={`flex flex-row items-center gap-2 border border-neutral-500/[0.5] 
-                  rounded-xl py-0.5 px-4 hover:border-indigo-500 text-neutral-500 transition-all duration-300 z-10
-                  ${selected == 0 && 'bg-indigo-50 border-indigo-500'}`}
-                                    onClick={() => { setSelected(0) }}>
-                                    <div className="w-3 h-3 rounded-full bg-indigo-500" />
-                                    Followers
-                                </button>
-                                <button className={`flex flex-row items-center gap-2 border border-neutral-500/[0.5] 
-                  rounded-xl py-0.5 px-4 hover:border-amber-500 text-neutral-500 transition-all duration-300 z-10
-                  ${selected == 1 && 'bg-amber-50 border-amber-500'}`}
-                                    onClick={() => { setSelected(1) }}>
-                                    <div className="w-3 h-3 rounded-full bg-amber-500" />
-                                    Likes
-                                </button>
-                                <button className={`flex flex-row items-center gap-2 border border-neutral-500/[0.5] 
-                  rounded-xl py-0.5 px-4 hover:border-fuchsia-500 text-neutral-500 transition-all duration-300 z-10
-                  ${selected == 2 && 'bg-fuchsia-50 border-fuchsia-500'}`}
-                                    onClick={() => { setSelected(2) }}>
-                                    <div className="w-3 h-3 rounded-full bg-fuchsia-500" />
-                                    Comments
-                                </button>
-                                <button className={`flex flex-row items-center gap-2 border border-neutral-500/[0.5] 
-                  rounded-full py-1 px-5 text-neutral-500 bg-indigo-100 z-10`}>
-                                    Last 12 months
-                                    <IoIosArrowDown />
-                                </button>
-                            </div>
-                        </div>
-                        {!loading && <div className="flex relative w-full mt-4 h-[calc(30vw_+_1rem)]">
-                            {ChartMainMemo(selected == 0, [], "Followers", "#6365f1", "#9193eb", "points-chart-0")}
-                            {ChartMainMemo(selected == 1, [], "Likes", "#f59e0b", "#f2b855", "points-chart-1")}
-                            {ChartMainMemo(selected == 2, [], "Comments", "#d846ef", "#e18eed", "points-chart-2")}
-                        </div>}
-                    </section> */}
                 </div>
                 <div className="flex flex-col gap-4">
                     <section className={`${styles['card']} flex flex-col`}>
                         <span className="text-neutral-500">Your Account</span>
-                        {!loading ? <img src="/assets/demo-pfp.png" className="mt-5 w-24 h-24 self-center" />
+                        {!loading ? <Image src={data?.general?.avatar_url} alt="pfp" className="mt-5 w-24 h-24 self-center rounded" sizes="100px" width={0} height={0}/>
                         : <div className={`${styles['loading-card']} w-24 h-24 mt-5 self-center`}/>}
                         {!loading ? 
                         <>
-                        <span className="mt-3 tracking-wider font-bold self-center text-lg text-neutral-700">Mike Monroe</span>
-                        <span className="tracking-wider self-center text-neutral-500">@mikemonroe</span>
-                        <div className="mt-5 grid grid-cols-3">
+                        <span className="mt-3 tracking-wider font-bold self-center text-lg text-neutral-700">{data?.general?.insta_name}</span>
+                        <span className="tracking-wider self-center text-neutral-500">@{data?.general?.username}</span>
+                        <div className="mt-5 grid grid-cols-2">
                             <section className="flex flex-col items-center">
-                                <span className="text-neutral-700 text-2xl font-bold">123</span>
-                                <span className="text-neutral-500">Posts</span>
-                            </section>
-                            <section className="flex flex-col items-center">
-                                <span className="text-neutral-700 text-2xl font-bold">12.7k</span>
+                                <span className="text-neutral-700 text-2xl font-bold">{data?.general?.follower_count}</span>
                                 <span className="text-neutral-500">Followers</span>
                             </section>
                             <section className="flex flex-col items-center">
-                                <span className="text-neutral-700 text-2xl font-bold">784</span>
+                                <span className="text-neutral-700 text-2xl font-bold">{data?.general?.following_count}</span>
                                 <span className="text-neutral-500">Following</span>
                             </section>
                         </div>

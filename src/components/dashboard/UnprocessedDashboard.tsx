@@ -1,4 +1,4 @@
-import styles from  "@/app/dashboard/[username]/Dashboard.module.css"
+import styles from  "@/app/user/[username]/Dashboard.module.css"
 import Image from "next/image"
 import { BsInstagram } from "react-icons/bs"
 
