@@ -7,6 +7,7 @@ import { useEffect, useState } from "react"
 import { FaArrowRight } from "react-icons/fa"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
+import Image from "next/image"
 
 export default function Search(){
 
@@ -78,7 +79,7 @@ export default function Search(){
 				Recent Searches
 			</div>
 			<div className="mt-4 flex flex-col w-full gap-2 text-neutral-500">
-				{recents.map((item, key) => {
+				{recents.length > 0 ? recents.map((item, key) => {
 					return (
 						<Link href={`/dashboard/${item}`}
 						key={key} className="flex flex-row justify-between items-center">
@@ -86,7 +87,14 @@ export default function Search(){
 							<FaArrowRight/>
 						</Link>
 					)
-				})}
+				})
+				:
+				<div className="flex flex-col items-center justify-center p-12 w-full gap-6">
+					<Image src="/Person.png" alt="Person" sizes="50vw" width={0} height={0} className="h-[100px] w-auto"/>
+					<span className="text-center">
+						Process a user profile and <br/> favourite them to add them here
+					</span>
+				</div>}
 			</div>
 		</div>
       </main>
