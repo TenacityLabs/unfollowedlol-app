@@ -50,9 +50,10 @@ const sampleFollowing = {
 interface props {
     loading: boolean,
     setLoading: Function
+    username: string
 }
 
-export default function UserDashboard({ loading, setLoading }: props) {
+export default function UserDashboard({ loading, setLoading, username }: props) {
 
     const [socialSelected, setSocialSelected] = useState<number>(0);
     //const [selected, setSelected] = useState<number>(0);
@@ -282,8 +283,8 @@ export default function UserDashboard({ loading, setLoading }: props) {
                         : <div className={`${styles['loading-card']} w-24 h-24 mt-5 self-center`}/>}
                         {!loading ? 
                         <>
-                        <span className="mt-3 tracking-wider font-bold self-center text-lg text-neutral-700">Mike Monroe</span>
-                        <span className="tracking-wider self-center text-neutral-500">@mikemonroe</span>
+                        <span className="mt-3 tracking-wider font-bold self-center text-lg text-neutral-700">{username}</span>
+                        <span className="tracking-wider self-center text-neutral-500">@{username}</span>
                         <div className="mt-5 grid grid-cols-3">
                             <section className="flex flex-col items-center">
                                 <span className="text-neutral-700 text-2xl font-bold">123</span>
