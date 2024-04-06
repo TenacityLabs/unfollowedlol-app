@@ -24,7 +24,7 @@ export default function Search(){
 	const [recents, setRecents] = useState<string[]>([]);
 
 	const handleSearch = () => {
-		if(search){router.push(`/dashboard/${search}`)}
+		if(search){router.push(`/user/${search}`)}
 	}
 
 	const handleKeyPress = (event:any) => {
@@ -81,7 +81,7 @@ export default function Search(){
 			<div className="mt-4 flex flex-col w-full gap-2 text-neutral-500">
 				{recents.length > 0 ? recents.map((item, key) => {
 					return (
-						<Link href={`/dashboard/${item}`}
+						<Link href={`/user/${item}`}
 						key={key} className="flex flex-row justify-between items-center">
 							{item}
 							<FaArrowRight/>

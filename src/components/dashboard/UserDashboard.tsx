@@ -3,7 +3,7 @@ import { BsPersonFillDown, BsPersonFillUp } from "react-icons/bs"
 import { LuSearch } from "react-icons/lu"
 import { FaArrowRight } from "react-icons/fa"
 import { useState, useEffect, useMemo } from "react"
-import styles from  "@/app/dashboard/[username]/Dashboard.module.css"
+import styles from  "@/app/user/[username]/Dashboard.module.css"
 import Image from "next/image"
 
 const sampleFollower = {

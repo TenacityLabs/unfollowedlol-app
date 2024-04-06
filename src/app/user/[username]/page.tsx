@@ -1,7 +1,7 @@
 "use client"
 import { BiLogOut } from "react-icons/bi";
 import { SlQuestion } from "react-icons/sl";
-import styles from "@/app/dashboard/[username]/Dashboard.module.css"
+import styles from "@/app/user/[username]/Dashboard.module.css"
 import { useEffect, useRef, useState } from "react";
 import UserDashboard from "@/components/dashboard/UserDashboard";
 import { IoReload } from "react-icons/io5";
