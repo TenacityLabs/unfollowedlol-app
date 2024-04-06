@@ -1,12 +1,10 @@
 import { BiSolidRightDownArrowCircle, BiSolidRightTopArrowCircle } from "react-icons/bi"
 import { BsPersonFillDown, BsPersonFillUp } from "react-icons/bs"
-import { IoIosArrowDown } from "react-icons/io"
 import { LuSearch } from "react-icons/lu"
 import { FaArrowRight } from "react-icons/fa"
 import { useState, useEffect, useMemo } from "react"
-import styles from "@/app/dashboard/Dashboard.module.css"
+import styles from  "@/app/dashboard/[username]/Dashboard.module.css"
 import Image from "next/image"
-import LineChart from "../data-visualization/LineChart"
 
 const sampleFollower = {
     name: "Donald Trump", handle: "@realDonaldTrump", posts: 578, followers: 1542, following: 89,
@@ -18,36 +16,36 @@ const sampleFollowing = {
     followString: "3 days ago", pfp: "/assets/ye.jpeg"
 }
 
-const ChartDescriptor: (...props: any[]) => JSX.Element =
-    (active: boolean, metric: string, value: number | string, percent: number, interval: string, loading: boolean) => {
-        return (
-            <div className={`absolute flex flex-col transition-all duration-500 ease-out
-  ${active ? "opacity-1 translate-x-0" : "opacity-0 translate-x-12"}`}>
-                <span className="text-neutral-500">{metric}</span>
-                {!loading ? <span className="text-neutral-700 text-2xl font-bold">{value}</span>
-                    : <div className={`${styles['loading-card-flex']} w-24 h-8`} />}
-                {!loading ? <div className="mt-1 flex flex-row gap-2 items-center text-neutral-500">
-                    <div className={`flex flex-row gap-1 ${percent != 0 && (percent > 0 ? "text-green-500" : "text-red-500")} 
-      items-center`}>
-                        {percent != 0 && (percent > 0 ? <BiSolidRightTopArrowCircle />
-                            : <BiSolidRightDownArrowCircle />)} <span className="font-bold">{percent}%</span>
-                    </div>
-                    <span className="text-[0.9rem]">{interval}</span>
-                </div>
-                    : <div className={`${styles['loading-card-flex']} mt-2 w-[10rem] h-[1.5rem]`} />}
-            </div>
-        )
-    }
+// const ChartDescriptor: (...props: any[]) => JSX.Element =
+//     (active: boolean, metric: string, value: number | string, percent: number, interval: string, loading: boolean) => {
+//         return (
+//             <div className={`absolute flex flex-col transition-all duration-500 ease-out
+//   ${active ? "opacity-1 translate-x-0" : "opacity-0 translate-x-12"}`}>
+//                 <span className="text-neutral-500">{metric}</span>
+//                 {!loading ? <span className="text-neutral-700 text-2xl font-bold">{value}</span>
+//                     : <div className={`${styles['loading-card-flex']} w-24 h-8`} />}
+//                 {!loading ? <div className="mt-1 flex flex-row gap-2 items-center text-neutral-500">
+//                     <div className={`flex flex-row gap-1 ${percent != 0 && (percent > 0 ? "text-green-500" : "text-red-500")} 
+//       items-center`}>
+//                         {percent != 0 && (percent > 0 ? <BiSolidRightTopArrowCircle />
+//                             : <BiSolidRightDownArrowCircle />)} <span className="font-bold">{percent}%</span>
+//                     </div>
+//                     <span className="text-[0.9rem]">{interval}</span>
+//                 </div>
+//                     : <div className={`${styles['loading-card-flex']} mt-2 w-[10rem] h-[1.5rem]`} />}
+//             </div>
+//         )
+//     }
 
-const ChartMain: (...props: any[]) => JSX.Element =
-    (active: boolean, data: any, metric: string, color1: string, color2: string, id: string) => {
-        return (
-            <div className={`absolute transition-all duration-500 ease-out w-full origin-bottom
-    ${active ? "opacity-1 scale-y-100" : "opacity-0 scale-y-0"}`}>
-                <LineChart chartData={data} metric={metric} color1={color1} color2={color2} elementId={id} />
-            </div>
-        )
-    }
+// const ChartMain: (...props: any[]) => JSX.Element =
+//     (active: boolean, data: any, metric: string, color1: string, color2: string, id: string) => {
+//         return (
+//             <div className={`absolute transition-all duration-500 ease-out w-full origin-bottom
+//     ${active ? "opacity-1 scale-y-100" : "opacity-0 scale-y-0"}`}>
+//                 <LineChart chartData={data} metric={metric} color1={color1} color2={color2} elementId={id} />
+//             </div>
+//         )
+//     }
 
 interface props {
     loading: boolean,
@@ -57,7 +55,7 @@ interface props {
 export default function UserDashboard({ loading, setLoading }: props) {
 
     const [socialSelected, setSocialSelected] = useState<number>(0);
-    const [selected, setSelected] = useState<number>(0);
+    //const [selected, setSelected] = useState<number>(0);
 
     const followers = [
         sampleFollower, sampleFollower, sampleFollower, sampleFollower, sampleFollower, sampleFollower, sampleFollower, sampleFollower, sampleFollower, sampleFollower
@@ -151,8 +149,8 @@ export default function UserDashboard({ loading, setLoading }: props) {
         })
     }, [followings])
 
-    const ChartDescriptorMemo = useMemo(() => ChartDescriptor, [selected])
-    const ChartMainMemo = useMemo(() => ChartMain, [selected])
+    // const ChartDescriptorMemo = useMemo(() => ChartDescriptor, [selected])
+    // const ChartMainMemo = useMemo(() => ChartMain, [selected])
 
     return (
         <div className="flex flex-col -mt-20 px-[3%]">
@@ -228,12 +226,14 @@ export default function UserDashboard({ loading, setLoading }: props) {
                                     className="outline-none border-b border-neutral-500/[0.5]" />
                             </div>
                         </div>
-                        <div className="flex flex-col w-full mt-4">
+                        {!loading ? <div className="flex flex-col w-full mt-4">
                             {socialSelected === 0 ?
                                 FollowersMemo : FollowingsMemo}
                         </div>
+                        :
+                        <div className={`${styles['loading-card']} h-full mt-4`} />}
                     </section>
-                    <section className={`${styles['card']} flex flex-col h-full`}>
+                    {/* <section className={`${styles['card']} flex flex-col h-full`}>
                         <div className="flex flex-row justify-between items-start h-[5rem]">
                             <div></div>
                             {ChartDescriptorMemo(selected == 0, "Followers", "12.7k", 10.6, "SINCE LAST YEAR", loading)}
@@ -273,12 +273,15 @@ export default function UserDashboard({ loading, setLoading }: props) {
                             {ChartMainMemo(selected == 1, [], "Likes", "#f59e0b", "#f2b855", "points-chart-1")}
                             {ChartMainMemo(selected == 2, [], "Comments", "#d846ef", "#e18eed", "points-chart-2")}
                         </div>}
-                    </section>
+                    </section> */}
                 </div>
                 <div className="flex flex-col gap-4">
                     <section className={`${styles['card']} flex flex-col`}>
                         <span className="text-neutral-500">Your Account</span>
-                        <img src="/assets/demo-pfp.png" className="mt-5 w-24 h-24 self-center" />
+                        {!loading ? <img src="/assets/demo-pfp.png" className="mt-5 w-24 h-24 self-center" />
+                        : <div className={`${styles['loading-card']} w-24 h-24 mt-5 self-center`}/>}
+                        {!loading ? 
+                        <>
                         <span className="mt-3 tracking-wider font-bold self-center text-lg text-neutral-700">Mike Monroe</span>
                         <span className="tracking-wider self-center text-neutral-500">@mikemonroe</span>
                         <div className="mt-5 grid grid-cols-3">
@@ -295,6 +298,9 @@ export default function UserDashboard({ loading, setLoading }: props) {
                                 <span className="text-neutral-500">Following</span>
                             </section>
                         </div>
+                        </>
+                        :
+                        <div className={`${styles['loading-card']} w-full h-full mt-3 self-center`}/>}
                     </section>
                     <section className={`${styles['card']} flex flex-col`}>
                         <span className="text-neutral-500">I don&apos;t follow back</span>
