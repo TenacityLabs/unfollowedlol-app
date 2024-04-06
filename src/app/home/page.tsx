@@ -9,7 +9,7 @@ import Link from "next/link"
 import { useRouter } from "next/navigation"
 import Image from "next/image"
 
-export default function Search(){
+export default function Home(){
 
 	const router = useRouter()
 	
@@ -44,7 +44,7 @@ export default function Search(){
             </Link>
               <span>unfollowed.lol</span>
               <span className="opacity-[0.4]">/</span>
-              <span>Search</span>
+              <span>Home</span>
             </div>
             <div className="flex flex-row gap-3 items-center text-xl">
               <button>

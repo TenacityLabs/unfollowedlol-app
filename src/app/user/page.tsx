@@ -1,4 +1,4 @@
-import Search from "../search/page";
+import Search from "../home/page";
 
 const Dashboard = Search
 
