@@ -6,7 +6,7 @@ export default function UnprocessedDashboard({}){
     return(
         <div className={`${styles['card']} m-8`}>
             <div className="inset-0 p-8 flex flex-col gap-4">
-                <span className="text-neutral-700 text-2xl font-semibold">Looks like you're the first one here</span>
+                <span className="text-neutral-700 text-2xl font-semibold">Looks like you&apos;re the first one here</span>
                 <span className="text-neutral-500 text-lg">This user has not yet been processed. Use the unfollowed.lol Google Chrome extension on Instagram to process their information.</span>
                 <div className="grid grid-cols-3 gap-[5%] mt-4 px-[5%]">
                     <section className="flex flex-col gap-4 items-center">
