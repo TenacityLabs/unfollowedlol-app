@@ -9,6 +9,7 @@ import { LuMenuSquare, LuSettings } from "react-icons/lu";
 import UnprocessedDashboard from "@/components/dashboard/UnprocessedDashboard";
 import { useSearchParams } from 'next/navigation'
 import { useParams } from "next/navigation";
+import axios from "axios";
 
 export default function Dashboard() {
   //is this just visual?
@@ -17,9 +18,34 @@ export default function Dashboard() {
   const [loadPercent, setLoadPercent] = useState<number>(0);
   const [loading, setLoading] = useState<boolean>(true);
   const [processed, setProcessed] = useState<boolean>(true);
-  const [modalOpen, setModalOpen] = useState<boolean>(true);
+  const [modalOpen, setModalOpen] = useState<boolean>(false);
+
+  const [data, setData] = useState<any>(null)
 
   const modalRef = useRef<any>(null)
+
+  useEffect(() => {
+    getData();
+  }, [params])
+
+  const getData = async() => {
+    try{
+      const response = await axios.get("http://127.0.0.1:8000/user/andrewhdurnford");
+      console.log(response)
+      setModalOpen(true)
+      // if(response.ok){
+      //   const data = await response.json()
+      //   console.log(data)
+      //   setModalOpen(true)
+      // }
+      // else{
+      //   throw Error("fetch didn't return ok")
+      // }
+    }
+    catch(err){
+      console.log(err)
+    }
+  }
 
   useEffect(() => {
     const handleModalClick = (e:MouseEvent) => {
@@ -123,8 +149,8 @@ export default function Dashboard() {
       <div className={`fixed inset-0 bg-black/[0.85] backdrop-blur-sm flex items-center justify-center z-[9999] 
       transition-opacity duration-500 ${!modalOpen && "pointer-events-none"}`}
       style={{opacity: modalOpen ? 1 : 0}}>
-        <div className="bg-white w-[40%] p-12 py-20 rounded flex items-center justify-center flex-col gap-3" ref={modalRef}>
-          <span className="font-black text-3xl text-neutral-700">Welcome to unfollowed.lol</span>
+        <div className="bg-white min-w-[40%] px-12 py-20 rounded flex items-center justify-center flex-col gap-3" ref={modalRef}>
+          <span className="font-black text-3xl text-neutral-700 text-center">Welcome to unfollowed.lol</span>
           <span className="text-neutral-500">Let&apos;s start with a quick guide to your dashboard.</span>
           <button className="rainbow-button px-12 py-3 rounded text-lg mt-10">Take the tour</button>
           <span className="text-neutral-500 hover:underline cursor-pointer" onClick={() => {setModalOpen(false)}}>Skip tutorial</span>
