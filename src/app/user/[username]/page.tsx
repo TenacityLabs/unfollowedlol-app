@@ -136,7 +136,7 @@ export default function Dashboard() {
               </div>
               :
               <div className="flex flex-col w-full">
-                <span className="text-[2.15rem]">Mike&apos;s Dashboard</span>
+                <span className="text-[2.15rem]">{params.username}&apos;s Dashboard</span>
                 <div className="flex flex-row gap-2 items-center">
                   <span className="text-[1rem]"> REFRESHED 1 MINUTE AGO </span>
                   <button onClick={() => { setLoadPercent(0) }}
@@ -147,7 +147,7 @@ export default function Dashboard() {
         </div>
         {!processed ? <UnprocessedDashboard />
           :
-          <UserDashboard loading={loading} setLoading={setLoading} />}
+          <UserDashboard loading={loading} setLoading={setLoading} username={params.username} />}
       </main>
       <div className={`fixed inset-0 bg-black/[0.85] backdrop-blur-sm flex items-center justify-center z-[9999] 
       transition-opacity duration-500 ${!modalOpen && "pointer-events-none"}`}
