@@ -1,6 +1,6 @@
 "use client"
 import { BiLogOut } from "react-icons/bi"
-import { LuMenuSquare, LuSettings } from "react-icons/lu"
+import { LuSettings } from "react-icons/lu"
 import { SlQuestion } from "react-icons/sl"
 import styles from "./Search.module.css"
 import { useEffect, useState } from "react"
@@ -39,7 +39,9 @@ export default function Search(){
         flex flex-col transition-all duration-300 items-center`}>
           <div className="flex flex-row justify-between items-center self-start w-full">
             <div className="flex flex-row gap-3 items-center">
-              <LuMenuSquare/>
+			<Link href="/dashboard">
+            <img src='/unfollowed_logo.png' alt="unfollowed.lol" className="w-6 h-6"/>
+            </Link>
               <span>unfollowed.lol</span>
               <span className="opacity-[0.4]">/</span>
               <span>Search</span>
