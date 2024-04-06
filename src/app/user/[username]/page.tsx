@@ -78,10 +78,11 @@ export default function Dashboard() {
   useEffect(() => {
     const min = 8;
     const variance = 10;
-    if (loadPercent < 100) {
+    if(!data){
       setTimeout(() => {
-        const next = Math.min(loadPercent + Math.round(min + variance * Math.random()), 95);
-        setLoadPercent(next)
+        if (loadPercent < 100) {
+          setLoadPercent(prev => Math.min(prev + Math.round(min + variance * Math.random()), 95))
+        }
       }, 200)
     }
   }, [loadPercent])
@@ -129,7 +130,7 @@ export default function Dashboard() {
               </div>
               :
               <div className="flex flex-col w-full">
-                <span className="text-[2.15rem]">Mike&apos;s Dashboard</span>
+                <span className="text-[2.15rem]">{data?.instanme || data?.username || params?.username}&apos;s Dashboard</span>
                 <div className="flex flex-row gap-2 items-center">
                   <span className="text-[1rem]"> REFRESHED 1 MINUTE AGO </span>
                   <button onClick={getData}
