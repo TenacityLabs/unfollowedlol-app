@@ -1,5 +1,6 @@
 import styles from  "@/app/user/[username]/Dashboard.module.css"
 import Image from "next/image"
+import Link from "next/link"
 import { BsInstagram } from "react-icons/bs"
 
 export default function UnprocessedDashboard({}){
@@ -24,10 +25,12 @@ export default function UnprocessedDashboard({}){
                     </section>
                 </div>
                 <div className="flex items-center justify-center">
-                    <button className={`rainbow-button text-xl tracking-wide flex flex-row items-center gap-3 px-10 py-3 rounded`}>
+                    <Link className="cursor-pointer" href="https://www.instagram.com/">
+                    <button className={`rainbow-button text-xl tracking-wide flex flex-row items-center gap-3 px-10 py-3 rounded cursor-pointer`}>
                         <BsInstagram/>
                         Go To Instagram
                     </button>
+                    </Link>
                 </div>
             </div>
         </div>
