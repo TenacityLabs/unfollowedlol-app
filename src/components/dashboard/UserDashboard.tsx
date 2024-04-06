@@ -33,7 +33,7 @@ export default function UserDashboard({ loading, data }: props) {
                             <span className="text-neutral-400 tracking-wider text-sm">@{item?.username}</span>
                         </div>
                     </div>
-                    <Link href={`/user/${item?.insta_name}`}
+                    <Link href={`/user/${item?.username}`}
                     className="flex items-center justify-center text-neutral-700 hover:text-neutral-400 transition-colors mr-8">
                         <FaArrowRight />
                     </Link>
@@ -58,7 +58,7 @@ export default function UserDashboard({ loading, data }: props) {
                             <span className="text-neutral-400 tracking-wider text-sm">@{item?.username}</span>
                         </div>
                     </div>
-                    <Link href={`/user/${item?.insta_name}`}
+                    <Link href={`/user/${item?.username}`}
                     className="flex items-center justify-center text-neutral-700 hover:text-neutral-400 transition-colors mr-8">
                         <FaArrowRight />
                     </Link>
