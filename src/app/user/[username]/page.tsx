@@ -5,11 +5,12 @@ import styles from "@/app/user/[username]/Dashboard.module.css"
 import { useEffect, useRef, useState } from "react";
 import UserDashboard from "@/components/dashboard/UserDashboard";
 import { IoReload } from "react-icons/io5";
-import { LuMenuSquare, LuSettings } from "react-icons/lu";
+import { LuSettings } from "react-icons/lu";
 import UnprocessedDashboard from "@/components/dashboard/UnprocessedDashboard";
 import { useSearchParams } from 'next/navigation'
 import { useParams } from "next/navigation";
 import axios from "axios";
+import Link from "next/link";
 
 export default function Dashboard() {
   //is this just visual?
@@ -97,7 +98,9 @@ export default function Dashboard() {
       flex flex-col transition-all duration-300`}>
           <div className="flex flex-row justify-between items-center">
             <div className="flex flex-row gap-3 items-center">
-              <LuMenuSquare />
+            <Link href="/dashboard">
+            <img src='/unfollowed_logo.png' alt="unfollowed.lol" className="w-6 h-6"/>
+            </Link>
               <span>unfollowed.lol</span>
               <span className="opacity-[0.4]">/</span>
               <span>{params.username}</span>
