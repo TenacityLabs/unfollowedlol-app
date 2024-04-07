@@ -8,47 +8,50 @@ import { LuSettings } from "react-icons/lu";
 import UnprocessedDashboard from "@/components/dashboard/UnprocessedDashboard";
 import { useParams } from "next/navigation";
 import Link from "next/link";
+import ApiError from "./api_error";
 
 export default function Dashboard() {
-  //is this just visual?
   const params = useParams<{ username: string }>();
-
+  
   const [loadPercent, setLoadPercent] = useState<number>(0);
   const [processed, setProcessed] = useState<boolean>(false);
   const [modalOpen, setModalOpen] = useState<boolean>(false);
+  const [data, setData] = useState<any>(null);
+  // Introduce a new state variable for error tracking
+  const [hasError, setHasError] = useState<boolean>(false);
 
-  const [data, setData] = useState<any>(null)
-
-  const modalRef = useRef<any>(null)
+  const modalRef = useRef<any>(null);
 
   useEffect(() => {
     getData();
   }, []);
 
   const getData = () => {
-    setData(null)
+    setData(null);
     setLoadPercent(0);
+    setHasError(false); // Reset error state on new fetch attempt
     fetch(`http://api.unfollowed.lol:8000/user/${params.username}/`)
       .then(response => response.json())
       .then(data => {
-        if(data.error){
+        if (data.error) {
           setData(null);
           setLoadPercent(100);
           setProcessed(false);
         } else {
-          if(!localStorage.getItem("firstTime")){
+          if (!localStorage.getItem("firstTime")) {
             localStorage.setItem("firstTime", "true");
-            setModalOpen(true)
+            setModalOpen(true);
           }
-          setData(data)
+          setData(data);
           setLoadPercent(100);
           setProcessed(true);
         }
       })
       .catch(error => {
-        console.error(error)
+        console.error(error);
+        setHasError(true); // Set error state to true if fetch fails
       });
-  }
+  };
 
   function formatDate(dateString: string): string {
     const date = new Date(dateString + 'Z'); // Parse as UTC
@@ -125,6 +128,9 @@ export default function Dashboard() {
     }
   }, [loadPercent, data]); 
   
+  if (hasError) {
+    return <ApiError />;
+  }
 
   return (
     <>
