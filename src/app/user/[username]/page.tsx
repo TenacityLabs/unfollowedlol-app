@@ -8,7 +8,7 @@ import { LuSettings } from "react-icons/lu";
 import UnprocessedDashboard from "@/components/dashboard/UnprocessedDashboard";
 import { useParams } from "next/navigation";
 import Link from "next/link";
-import ApiError from "./api_error";
+import ApiError from "./ApiError";
 
 export default function Dashboard() {
   const params = useParams<{ username: string }>();
@@ -31,7 +31,12 @@ export default function Dashboard() {
     setLoadPercent(0);
     setHasError(false); // Reset error state on new fetch attempt
     fetch(`http://api.unfollowed.lol:8000/user/${params.username}/`)
-      .then(response => response.json())
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(response.statusText);
+        }
+        return response.json();
+      })
       .then(data => {
         if (data.error) {
           setData(null);

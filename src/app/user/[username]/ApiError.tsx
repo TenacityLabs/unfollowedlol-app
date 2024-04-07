@@ -1,7 +1,7 @@
 export default function ApiError() {
     return (
         <div className="bg-[#0B0B0F] w-screen h-screen flex flex-col mb-1/5 relative overflow-hidden">
-          <p className="absolute top-1/2 left-1/2 transform z-10 -translate-x-1/2 -translate-y-1/2 min-w-fit h-80 text-3xl hero-text:text-8xl text-center font-bold leading-[115%] bg-gradient-to-b from-[#FFFFFF] to-[#ffffff86] text-transparent bg-clip-text">Sorry, an error occurred. Please try again later</p>
+          <p className="absolute top-1/2 left-1/2 transform z-10 -translate-x-1/2 -translate-y-1/2 w-fit text-3xl text-wrap text-center font-bold leading-[115%] bg-gradient-to-b from-[#FFFFFF] to-[#ffffff86] text-transparent bg-clip-text">Sorry, an error occurred. Please try again later</p>
         <div className="w-[10%] h-[10%] left-[10%] top-[5%] absolute bg-gradient-to-b from-[#000000] to-[#FFD5CC] rounded-full blur-[100px]" />
           <div className="w-[15%] h-[20%] left-[10%] top-[5%] absolute bg-gradient-to-b from-[#891600] to-[#661100] blur-[100px]" />
         
