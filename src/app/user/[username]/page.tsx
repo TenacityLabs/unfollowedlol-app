@@ -28,7 +28,7 @@ export default function Dashboard() {
   const getData = () => {
     setData(null)
     setLoadPercent(0);
-    fetch(`http://127.0.0.1:8000/user/${params.username}/`)
+    fetch(`http://api.unfollowed.lol:8000/user/${params.username}/`)
       .then(response => response.json())
       .then(data => {
         console.log(data)
