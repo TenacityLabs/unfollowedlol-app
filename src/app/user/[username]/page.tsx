@@ -31,16 +31,16 @@ export default function Dashboard() {
     fetch(`http://api.unfollowed.lol:8000/user/${params.username}/`)
       .then(response => response.json())
       .then(data => {
-        console.log(data)
         if(data.error){
           setData(null);
           setLoadPercent(100);
           setProcessed(false);
         } else {
-          console.log("Data Fetched")
-          console.log(data)
+          if(!localStorage.getItem("firstTime")){
+            localStorage.setItem("firstTime", "true");
+            setModalOpen(true)
+          }
           setData(data)
-          setModalOpen(true);
           setLoadPercent(100);
           setProcessed(true);
         }
