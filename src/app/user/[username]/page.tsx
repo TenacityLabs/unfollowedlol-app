@@ -4,10 +4,10 @@ import { SlQuestion } from "react-icons/sl";
 import styles from "@/app/user/[username]/Dashboard.module.css"
 import { useEffect, useRef, useState } from "react";
 import UserDashboard from "@/components/dashboard/UserDashboard";
-import { IoReload } from "react-icons/io5";
-import { LuMenuSquare, LuSettings } from "react-icons/lu";
+import { LuSettings } from "react-icons/lu";
 import UnprocessedDashboard from "@/components/dashboard/UnprocessedDashboard";
 import { useParams } from "next/navigation";
+import Link from "next/link";
 
 export default function Dashboard() {
   //is this just visual?
@@ -31,17 +31,18 @@ export default function Dashboard() {
     fetch(`http://127.0.0.1:8000/user/${params.username}/`)
       .then(response => response.json())
       .then(data => {
+        console.log(data)
         if(data.error){
-          setData(null)
+          setData(null);
           setLoadPercent(100);
-          setProcessed(false)
-        }
-        else{
+          setProcessed(false);
+        } else {
+          console.log("Data Fetched")
           console.log(data)
           setData(data)
           setModalOpen(true);
           setLoadPercent(100);
-          setProcessed(true)
+          setProcessed(true);
         }
       })
       .catch(error => {
@@ -49,6 +50,38 @@ export default function Dashboard() {
       });
   }
 
+  function formatDate(dateString: string): string {
+    const date = new Date(dateString + 'Z'); // Parse as UTC
+    const userTimeZone = Intl.DateTimeFormat().resolvedOptions().timeZone; // User's time zone
+    const options: Intl.DateTimeFormatOptions = {
+      timeZone: userTimeZone,
+      month: 'long',
+      day: 'numeric',
+      year: 'numeric',
+      hour: 'numeric',
+      minute: '2-digit',
+      hour12: true,
+    };
+    const getDaySuffix = (day: number): string => {
+      if (day > 3 && day < 21) return 'th';
+      switch (day % 10) {
+        case 1: return "st";
+        case 2: return "nd";
+        case 3: return "rd";
+        default: return "th";
+      }
+    };
+    const formattedParts = new Intl.DateTimeFormat('en-US', options).formatToParts(date);
+    const month = formattedParts.find(part => part.type === "month")?.value;
+    const day = formattedParts.find(part => part.type === "day")?.value;
+    const year = formattedParts.find(part => part.type === "year")?.value;
+    const hour = formattedParts.find(part => part.type === "hour")?.value;
+    const minute = formattedParts.find(part => part.type === "minute")?.value;
+    const dayPeriod = formattedParts.find(part => part.type === "dayPeriod")?.value;
+    const daySuffix = getDaySuffix(parseInt(day!));
+    return `${month} ${day}${daySuffix} ${year}, ${hour}:${minute} ${dayPeriod}`;
+  }
+  
   useEffect(() => {
     const handleModalClick = (e:MouseEvent) => {
       if (modalRef.current && !modalRef.current.contains(e.target)) {
@@ -78,14 +111,20 @@ export default function Dashboard() {
   useEffect(() => {
     const min = 8;
     const variance = 10;
-    if(!data){
-      setTimeout(() => {
-        if (loadPercent < 100) {
-          setLoadPercent(prev => Math.min(prev + Math.round(min + variance * Math.random()), 95))
-        }
-      }, 200)
+    
+    if(!data && loadPercent < 100){
+      const timer = setTimeout(() => {
+        setLoadPercent(prev => Math.min(prev + Math.round(min + variance * Math.random()), 99));
+      }, 200);
+  
+      return () => clearTimeout(timer);
     }
-  }, [loadPercent])
+  
+    if(data) {
+      setLoadPercent(100);
+    }
+  }, [loadPercent, data]); 
+  
 
   return (
     <>
@@ -94,7 +133,9 @@ export default function Dashboard() {
       flex flex-col transition-all duration-300`}>
           <div className="flex flex-row justify-between items-center">
             <div className="flex flex-row gap-3 items-center">
-              <LuMenuSquare />
+              <Link href="/home">
+              <img src="/unfollowed_logo.png" alt="unfollowed.lol logo" className="w-6 h-6" />
+              </Link>
               <span>unfollowed.lol</span>
               <span className="opacity-[0.4]">/</span>
               <span>{params.username}</span>
@@ -129,14 +170,19 @@ export default function Dashboard() {
                 </div>
               </div>
               :
+              <div className="flex flex-row justify-between w-full"> 
               <div className="flex flex-col w-full">
                 <span className="text-[2.15rem]">{data?.instanme || data?.username || params?.username}&apos;s Dashboard</span>
-                <div className="flex flex-row gap-2 items-center">
-                  <span className="text-[1rem]"> REFRESHED 1 MINUTE AGO </span>
-                  <button onClick={getData}
-                    className="hover:rotate-[270deg] transition-all delay-150 duration-500"><IoReload /></button>
+                <div className="flex flex-row gap-2 items-center" style={{ display: processed ? 'flex' : 'none' }}>
+                  <span className="text-[1rem]">LAST PROCESSED: </span>
+                  <span className="text-[1rem]">{formatDate(data?.general.last_updated)}</span>
                 </div>
-              </div>}
+              </div>
+              <div className="min-w-fit p-5 bg-gradient-to-l from-indigo-500 via-purple-600 to-amber-500 rounded-[10px]  justify-start items-center gap-3.5 inline-flex">
+              <img src="/instagram_logo.svg" className="fill-white w-5 h-5"></img>
+                  <div className="text-center text-white text-xl font-normal min-w-fit">Reprocess User</div>
+                </div>
+              </div>} 
           </div>
         </div>
         { !(loadPercent < 100) && !processed ? <UnprocessedDashboard />
