@@ -45,12 +45,40 @@ export default function UserDashboard({ loading, data }: props) {
         };
     }, [data, searchQuery]);
 
+    function checkForWrapDebounced() {
+        let timeout: number | undefined;
+        const wait: number = 100; 
+
+        const check = () => {
+            const wrapper = document.getElementById('wrap') as HTMLElement | null;
+            const divider = document.getElementById('divider') as HTMLElement | null;
+            
+            if (wrapper && divider) {
+                console.log(wrapper.offsetHeight)
+                if (wrapper.offsetHeight > 30) {
+                    divider.style.display = 'none';
+                } else {
+                    divider.style.display = 'block';
+                }
+            }
+        };
+
+        return () => {
+            clearTimeout(timeout);
+            timeout = window.setTimeout(check, wait);
+        };
+    }
+    if (typeof window !== 'undefined') {
+        window.onload = checkForWrapDebounced();
+        window.onresize = checkForWrapDebounced();
+    }
+
     const renderItem = (item: UserData, key: number) => (
         <div key={key} className="flex flex-row justify-between w-full py-2 border-t border-t-neutral-300/[0.3] items-center">
           <div className="flex flex-row gap-4 items-center">
-            <Image src={item?.avatar_url ?? '/default-avatar.png'} // Fallback to a default image if avatar_url is not present
+            <Image src={item?.avatar_url ?? '/default-avatar.png'} 
                 alt="profile picture"
-                width={40} // Corrected for actual size to match className
+                width={40} 
                 height={40}
                 className="w-10 h-10 rounded-full" />
             <div className="flex flex-col justify-center">
@@ -58,9 +86,18 @@ export default function UserDashboard({ loading, data }: props) {
               <span className="text-neutral-400 tracking-wider text-sm">@{item?.username}</span>
             </div>
           </div>
-          <Link href={`/user/${item?.username}`} className="flex items-center justify-center text-neutral-700 hover:text-neutral-400 transition-colors mr-8">
+          <div className="flex gap-10">
+          <Link href={`https://www.instagram.com/${item.username}/`}>
+            <button className="h-8 px-3.5 py-2 bg-violet-400 bg-opacity-10 rounded-full justify-center items-center gap-2.5 inline-flex max-w-fit">
+                <img src="/instagram_logo.svg" className="w-3 h-3"></img>
+                <span className="text-xs font-semibold">View on Instagram</span>
+            </button>
+        </Link>
+          <Link href={`/user/${item?.username}`} className="flex items-center justify-center text-neutral-700 hover:text-neutral-400 transition-colors mr-8 gap-5">
+            <span className="text-sm">Process profile</span>
             <FaArrowRight />
           </Link>
+          </div>
         </div>
       );
       
@@ -74,7 +111,6 @@ export default function UserDashboard({ loading, data }: props) {
         return filteredData.following.map((item: UserData, key: number) => renderItem(item, key));
     }, [filteredData]);
     
-    // Repeat for FansMemo and UnfollowersMemo
     const FansMemo = useMemo(() => {
         if (!filteredData) return <></>;
         return filteredData.fans.map((item: UserData, key: number) => renderItem(item, key));
@@ -141,8 +177,8 @@ export default function UserDashboard({ loading, data }: props) {
                     </div>
                     <section className={`${styles['card']} flex flex-col overflow-y-scroll`}>
                         <span className="text-neutral-500">My Social Circle</span>
-                        <div className="flex flex-row justify-between items-start">
-                            <div className="flex flex-row flex-wrap gap-2 mt-2 items-center">
+                        <div className="flex flex-row justify-between items-center">
+                            <div className="flex flex-row flex-wrap gap-2 mt-2 items-center" id="wrap">
                                 <button className={`flex flex-row items-center gap-2 border border-neutral-500/[0.5] 
                     rounded-xl py-0.5 px-4 hover:border-red-500 text-neutral-500 transition-all duration-300 z-10
                     ${socialSelected == 3 && 'bg-red-50 border-red-500'}`}
@@ -157,7 +193,7 @@ export default function UserDashboard({ loading, data }: props) {
                                     <div className="w-3 h-3 rounded-full bg-blue-500" />
                                     User doesn&apos;t follow back
                                 </button>
-                                <div className="w-[1px] h-6 bg-slate-200"/>   
+                                <div className="w-[1px] h-6 bg-slate-200" id="divider"/>   
                                 <button className={`flex flex-row items-center gap-2 border border-neutral-500/[0.5] 
                     rounded-xl py-0.5 px-4 hover:border-indigo-500 text-neutral-500 transition-all duration-300 z-10
                     ${socialSelected == 0 && 'bg-indigo-50 border-indigo-500'}`}
@@ -198,8 +234,8 @@ export default function UserDashboard({ loading, data }: props) {
                 </div>
                 <div className="flex flex-col gap-4">
                     <section className={`${styles['card']} flex flex-col`}>
-                        <span className="text-neutral-500">Your Account</span>
-                        {!loading ? <Image src={data?.general?.avatar_url} alt="pfp" className="mt-5 w-24 h-24 self-center rounded" sizes="100px" width={0} height={0}/>
+                        <span className="text-neutral-500">Account</span>
+                        {!loading ? <Image src={data?.general?.avatar_url} alt="pfp" className="mt-5 w-24 h-24 self-center rounded-full" sizes="100px" width={0} height={0}/>
                         : <div className={`${styles['loading-card']} w-24 h-24 mt-5 self-center`}/>}
                         {!loading ? 
                         <>
@@ -214,12 +250,15 @@ export default function UserDashboard({ loading, data }: props) {
                                 <span className="text-neutral-700 text-2xl font-bold">{data?.general?.following_count}</span>
                                 <span className="text-neutral-500">Following</span>
                             </section>
-                            <div className="flex justify-center items-center pt-7">
-                        <button className="h-10 p-3 bg-indigo-800 bg-opacity-10 rounded-md border border-slate-700 justify-center items-center gap-2.5 inline-flex max-w-fit">
-                            <img src="/instagram_logo.svg" className="fill-slate-700 w-5 h-5"></img>
-                            <span>View on Instagram</span>
-                            </button>
+                            
                         </div>
+                        <div className="flex justify-center items-center pt-7">
+                        <Link href={`https://www.instagram.com/${data.general.username}/`}>
+                        <button className="h-10 p-3 bg-indigo-800 bg-opacity-10 rounded-md border border-slate-700 justify-center items-center gap-2.5 inline-flex max-w-fit">
+                            <img src="/instagram_logo.svg" className="w-5 h-5"></img>
+                            <span >View on Instagram</span>
+                        </button>
+                        </Link>
                         </div>
                         </>
                         :
@@ -228,10 +267,12 @@ export default function UserDashboard({ loading, data }: props) {
                     <section className={`${styles['card']} flex flex-col justify-center items-center`}>
                         <span className="w-full text-neutral-600 text-lg font-medium">Report an Issue</span>
                         <span className="w-full text-gray-500 text-sm mb-6">Found a bug? Help us improve unfollowed.lol by reporting it. We appreciate you!</span>
+                        <Link href="https://docs.google.com/forms/d/e/1FAIpQLSesgcw1yP1fm6OlO8p5jb4u-jCz71AFXYUSNAZJ3JvDZVjW5A/viewform">
                         <button className="h-10 p-3 bg-indigo-800 bg-opacity-10 rounded-md border border-slate-700 justify-center items-center gap-2.5 inline-flex max-w-fit">
                             <img src="/bug.svg" className="w-5 h-5"></img>
                             <span>Bug report form</span>
-                            </button>
+                        </button>
+                        </Link>
                     </section>
                 </div>
             </div>
