@@ -181,7 +181,7 @@ export default function Dashboard() {
                 </div>
               </div>
               :
-              <div className="flex flex-row justify-between w-full"> 
+              <div className="flex flex-row justify-between items-center w-full"> 
               <div className="flex flex-col w-full">
                 <span className="text-[2.15rem]">{data?.instanme || data?.username || params?.username}&apos;s Dashboard</span>
                 <div className="flex flex-row gap-2 items-center" style={{ display: processed ? 'flex' : 'none' }}>
@@ -189,10 +189,12 @@ export default function Dashboard() {
                   <span className="text-[1rem]">{formatDate(data?.general.last_updated)}</span>
                 </div>
               </div>
-              <div className="min-w-fit p-5 bg-gradient-to-l from-indigo-500 via-purple-600 to-amber-500 rounded-[10px]  justify-start items-center gap-3.5 inline-flex">
-              <img src="/instagram_logo.svg" className="fill-white w-5 h-5"></img>
+              <Link href={`https://www.instagram.com/${params.username}/`}>
+                <div className="p-2 h-12 w-52 border rounded-[10px] justify-center items-center gap-3 inline-flex">
+                  <img src="/instagram.svg" className="fill-white w-5 h-5"></img>
                   <div className="text-center text-white text-xl font-normal min-w-fit">Reprocess User</div>
                 </div>
+              </Link>
               </div>} 
           </div>
         </div>
