@@ -32,9 +32,6 @@ export default function Dashboard() {
     setHasError(false); // Reset error state on new fetch attempt
     fetch(`https://api.unfollowed.lol:8000/user/${params.username}/`)
       .then(response => {
-        if (!response.ok) {
-          throw new Error(response.statusText);
-        }
         return response.json();
       })
       .then(data => {
@@ -186,7 +183,7 @@ export default function Dashboard() {
                 <span className="text-[2.15rem]">{data?.instanme || data?.username || params?.username}&apos;s Dashboard</span>
                 <div className="flex flex-row gap-2 items-center" style={{ display: processed ? 'flex' : 'none' }}>
                   <span className="text-[1rem]">LAST PROCESSED: </span>
-                  <span className="text-[1rem]">{formatDate(data?.general.last_updated)}</span>
+                  <span className="text-[1rem]">{processed ? formatDate(data?.general.last_updated) : null}</span>
                 </div>
               </div>
               <Link href={`https://www.instagram.com/${params.username}/`}>
