@@ -82,15 +82,17 @@ export default function UserDashboard({ loading, data }: props) {
                 height={40}
                 className="w-10 h-10 rounded-full" />
             <div className="flex flex-col justify-center">
+            <Link href={`https://www.instagram.com/${item.username}/`} target="_blank">
               <span className="text-lg text-neutral-700 font-semibold">{item?.insta_name || item?.username}</span>
+              </Link>
               <span className="text-neutral-400 tracking-wider text-sm">@{item?.username}</span>
             </div>
           </div>
           <div className="flex gap-10">
-          <Link href={`https://www.instagram.com/${item.username}/`}>
-            <button className="h-8 px-3.5 py-2 bg-violet-400 bg-opacity-10 rounded-full justify-center items-center gap-2.5 inline-flex max-w-fit">
+          <Link href={`https://www.instagram.com/${item.username}/`} target="_blank">
+                        <button className="h-8 px-3.5 py-2 bg-violet-400 bg-opacity-10 rounded-full justify-center items-center gap-2.5 inline-flex max-w-fit">
                 <img src="/instagram_logo.svg" className="w-3 h-3"></img>
-                <span className="text-xs font-semibold">View on Instagram</span>
+                <span className="text-xs font-semibold">Unfollow</span>
             </button>
         </Link>
           <Link href={`/user/${item?.username}`} className="flex items-center justify-center text-neutral-700 hover:text-neutral-400 transition-colors mr-8 gap-5">
