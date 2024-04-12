@@ -186,14 +186,14 @@ export default function UserDashboard({ loading, data }: props) {
                     ${socialSelected == 3 && 'bg-red-50 border-red-500'}`}
                                     onClick={() => { setSocialSelected(3) }}>
                                     <div className="w-3 h-3 rounded-full bg-red-500" />
-                                    Doesn&apos;t follow user back
+                                    Unfollowers
                                 </button>
                                 <button className={`flex flex-row items-center gap-2 border border-neutral-500/[0.5] 
                     rounded-xl py-0.5 px-4 hover:border-blue-500 text-neutral-500 transition-all duration-300 z-10
                     ${socialSelected == 2 && 'bg-blue-50 border-blue-500'}`}
                                     onClick={() => { setSocialSelected(2) }}>
                                     <div className="w-3 h-3 rounded-full bg-blue-500" />
-                                    Unfollowers
+                                    User doesn&apos;t follow back
                                 </button>
                                 <div className="w-[1px] h-6 bg-slate-200" id="divider"/>   
                                 <button className={`flex flex-row items-center gap-2 border border-neutral-500/[0.5] 
