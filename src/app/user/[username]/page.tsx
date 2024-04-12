@@ -30,7 +30,7 @@ export default function Dashboard() {
     setData(null);
     setLoadPercent(0);
     setHasError(false); // Reset error state on new fetch attempt
-    fetch(`http://api.unfollowed.lol:8000/user/${params.username}/`)
+    fetch(`https://api.unfollowed.lol:8000/user/${params.username}/`)
       .then(response => {
         if (!response.ok) {
           throw new Error(response.statusText);
