@@ -39,9 +39,13 @@ export default function Dashboard() {
       })
       .then(data => {
         if (data.error) {
-          setData(null);
-          setLoadPercent(100);
-          setProcessed(false);
+          if (data.error === "User not found") {
+            setData(null);
+            setLoadPercent(100);
+            setProcessed(false);
+          } else {
+            setHasError(true);
+          }
         } else {
           if (!localStorage.getItem("firstTime")) {
             localStorage.setItem("firstTime", "true");
@@ -52,10 +56,6 @@ export default function Dashboard() {
           setProcessed(true);
         }
       })
-      .catch(error => {
-        console.error(error);
-        setHasError(true); // Set error state to true if fetch fails
-      });
   };
 
   function formatDate(dateString: string): string {
