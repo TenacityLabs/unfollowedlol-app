@@ -33,6 +33,11 @@ const Header = () => {
                 {/* <p className="hidden sm:flex text-white text-lg cursor-pointer">
                     About
                 </p> */}
+                <Link href="/home">
+                <p className="hidden sm:flex text-white text-lg cursor-pointer">
+                    Home
+                </p>
+                  </Link>
                 <p onClick={scrollToFeatures} className="hidden sm:flex text-white text-lg cursor-pointer">
                     Features
                 </p>

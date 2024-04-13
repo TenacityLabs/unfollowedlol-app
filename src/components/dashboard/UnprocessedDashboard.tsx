@@ -3,7 +3,11 @@ import Image from "next/image"
 import Link from "next/link"
 import { BsInstagram } from "react-icons/bs"
 
-export default function UnprocessedDashboard({}){
+type UnprocessedDashboardProps = {
+    username: string;
+};
+
+export default function UnprocessedDashboard({username}: UnprocessedDashboardProps) {
     return(
         <div className={`${styles['card']} m-8`}>
             <div className="inset-0 p-8 flex flex-col gap-4">
@@ -25,7 +29,7 @@ export default function UnprocessedDashboard({}){
                     </section>
                 </div>
                 <div className="flex items-center justify-center">
-                    <Link className="cursor-pointer" href="https://www.instagram.com/">
+                    <Link className="cursor-pointer" href={`https://www.instagram.com/${username}`}>
                     <button className={`rainbow-button text-xl tracking-wide flex flex-row items-center gap-3 px-10 py-3 rounded cursor-pointer`}>
                         <BsInstagram/>
                         Go To Instagram

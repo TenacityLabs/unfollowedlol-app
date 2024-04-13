@@ -186,7 +186,7 @@ export default function UserDashboard({ loading, data }: props) {
                     ${socialSelected == 3 && 'bg-red-50 border-red-500'}`}
                                     onClick={() => { setSocialSelected(3) }}>
                                     <div className="w-3 h-3 rounded-full bg-red-500" />
-                                    Unfollowers
+                                    Doesn&apos;t follow user back
                                 </button>
                                 <button className={`flex flex-row items-center gap-2 border border-neutral-500/[0.5] 
                     rounded-xl py-0.5 px-4 hover:border-blue-500 text-neutral-500 transition-all duration-300 z-10

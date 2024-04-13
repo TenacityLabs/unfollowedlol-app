@@ -144,7 +144,9 @@ export default function Dashboard() {
               <Link href="/home">
               <img src="/unfollowed_logo.png" alt="unfollowed.lol logo" className="w-6 h-6" />
               </Link>
+              <Link href="/">
               <span>unfollowed.lol</span>
+              </Link>
               <span className="opacity-[0.4]">/</span>
               <span>{params.username}</span>
             </div>
@@ -187,7 +189,7 @@ export default function Dashboard() {
                 </div>
               </div>
               <Link href={`https://www.instagram.com/${params.username}/`}>
-                <div className="p-2 h-12 w-52 border rounded-[10px] justify-center items-center gap-3 inline-flex">
+                <div className={`p-2 h-12 w-52 border rounded-[10px] justify-center items-center gap-3 inline-flex ${processed && loadPercent > 99 ? null : "hidden"}`}>
                   <img src="/instagram.svg" className="fill-white w-5 h-5"></img>
                   <div className="text-center text-white text-xl font-normal min-w-fit">Reprocess User</div>
                 </div>
@@ -195,7 +197,7 @@ export default function Dashboard() {
               </div>} 
           </div>
         </div>
-        { !(loadPercent < 100) && !processed ? <UnprocessedDashboard />
+        { !(loadPercent < 100) && !processed ? <UnprocessedDashboard username={params.username}/>
           :
           <UserDashboard loading={loadPercent < 100} data={data}/>}
       </main>

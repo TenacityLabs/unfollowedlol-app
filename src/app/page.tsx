@@ -117,6 +117,11 @@ export default function Home() {
                   {/* <p className="text-white text-lg opacity-50 hover:opacity-100 transition-opacity duration-30 cursor-pointer">
                       About
                   </p> */}
+                  <Link href="/home">
+                  <p className="text-white text-lg opacity-50 hover:opacity-100 transition-opacity duration-30 cursor-pointer">
+                      Home
+                  </p>
+                  </Link>
                   <p onClick={scrollToFeatures}className="text-white text-lg opacity-50 hover:opacity-100 transition-opacity duration-30 cursor-pointer">
                       Features
                   </p>

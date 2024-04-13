@@ -34,15 +34,17 @@ export default function Home(){
 	}
 
     return (
-        <main className="relative overflow-y-scroll">
+        <main className="relative bg-white h-screen">
         <div className={`${styles['top-gradient']} rounded-b-xl text-white px-[3%] pt-4 pb-20
         flex flex-col transition-all duration-300 items-center`}>
           <div className="flex flex-row justify-between items-center self-start w-full">
             <div className="flex flex-row gap-3 items-center">
-			<Link href="/dashboard">
+			<Link href="/">
             <img src='/unfollowed_logo.png' alt="unfollowed.lol" className="w-6 h-6"/>
             </Link>
+			<Link href="/">
               <span>unfollowed.lol</span>
+			</Link>
               <span className="opacity-[0.4]">/</span>
               <span>Home</span>
             </div>
@@ -63,7 +65,7 @@ export default function Home(){
           </div>
           <div className="mt-16 text-white flex flex-col items-center w-[70vw] gap-2">
             <div className="self-start">
-                Search an Instagram user to process their profile
+                Search an Instagram user to view their profile
             </div>
             <div className="flex flex-row w-full bg-white rounded">
                 <input className={`bg-transparent w-full rounded py-2 outline-none caret-black px-4 text-black`} value={search}
@@ -80,18 +82,18 @@ export default function Home(){
 			<div className="text-neutral-500 font-semibold">
 				Recent Searches
 			</div>
-			<div className="mt-4 flex flex-col w-full gap-2 text-neutral-500">
+			<div className="max-h-72 mt-4 flex flex-col w-full gap-2 text-neutral-500 overflow-auto">
 				{recents.length > 0 ? recents.map((item, key) => {
 					return (
 						<Link href={`/user/${item}`}
-						key={key} className="flex flex-row justify-between items-center">
+						key={key} className="flex flex-row justify-between items-center pr-8">
 							{item}
 							<FaArrowRight/>
 						</Link>
 					)
 				})
 				:
-				<div className="flex flex-col items-center justify-center p-12 w-full gap-6">
+				<div className="flex flex-col items-center justify-center p-12 w-full gap-6 overflow-auto">
 					<Image src="/Person.png" alt="Person" sizes="50vw" width={0} height={0} className="h-[100px] w-auto"/>
 					<span className="text-center">
 						Process a user profile and <br/> favourite them to add them here
