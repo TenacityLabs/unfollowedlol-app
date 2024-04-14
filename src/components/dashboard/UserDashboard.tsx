@@ -1,28 +1,19 @@
 import { LuSearch } from "react-icons/lu"
-import { FaArrowRight } from "react-icons/fa"
-import { useState, useMemo } from "react"
+import { useState, useMemo, useEffect } from "react"
 import styles from  "@/app/user/[username]/Dashboard.module.css"
 import Image from "next/image"
 import Link from "next/link"
-
-interface props {
-    loading: boolean,
-    data:any,
-}
-
-// Define the UserData interface outside of the component
-interface UserData {
-    username: string;
-    avatar_url: string;
-    insta_name: string;
-}
+import TransactionsModal from "./TransactionsModal";
+import SocialDashboard from "./SocialDashboard"
+import { DashboardProps, UserData } from "./types"
 
 
-export default function UserDashboard({ loading, data }: props) {
+export default function UserDashboard({ loading, data }: DashboardProps) {
 
     const [socialSelected, setSocialSelected] = useState<number>(3);
-    //const [selected, setSelected] = useState<number>(0);
     const [searchQuery, setSearchQuery] = useState('');
+    const [showFollowers, setShowFollowers] = useState<boolean>(false);
+    const [showUnfollowers, setShowUnfollowers] = useState<boolean>(false);
 
     const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setSearchQuery(event.target.value.toLowerCase());
@@ -54,7 +45,6 @@ export default function UserDashboard({ loading, data }: props) {
             const divider = document.getElementById('divider') as HTMLElement | null;
             
             if (wrapper && divider) {
-                console.log(wrapper.offsetHeight)
                 if (wrapper.offsetHeight > 30) {
                     divider.style.display = 'none';
                 } else {
@@ -72,66 +62,19 @@ export default function UserDashboard({ loading, data }: props) {
         window.onload = checkForWrapDebounced();
         window.onresize = checkForWrapDebounced();
     }
-
-    const renderItem = (item: UserData, key: number) => (
-        <div key={key} className="flex flex-row justify-between w-full py-2 border-t border-t-neutral-300/[0.3] items-center">
-          <div className="flex flex-row gap-4 items-center">
-            <Image src={item?.avatar_url ?? '/default-avatar.png'} 
-                alt="profile picture"
-                width={40} 
-                height={40}
-                className="w-10 h-10 rounded-full" />
-            <div className="flex flex-col justify-center">
-            <Link href={`https://www.instagram.com/${item.username}/`} target="_blank">
-              <span className="text-lg text-neutral-700 font-semibold">{item?.insta_name || item?.username}</span>
-              </Link>
-              <span className="text-neutral-400 tracking-wider text-sm">@{item?.username}</span>
-            </div>
-          </div>
-          <div className="flex gap-10">
-          <Link href={`https://www.instagram.com/${item.username}/`} target="_blank">
-                        <button className="h-8 px-3.5 py-2 bg-violet-400 bg-opacity-10 rounded-full justify-center items-center gap-2.5 inline-flex max-w-fit">
-                <img src="/instagram_logo.svg" className="w-3 h-3"></img>
-                <span className="text-xs font-semibold">Unfollow</span>
-            </button>
-        </Link>
-          <Link href={`/user/${item?.username}`} className="flex items-center justify-center text-neutral-700 hover:text-neutral-400 transition-colors mr-8 gap-5">
-            <span className="text-sm">Process profile</span>
-            <FaArrowRight />
-          </Link>
-          </div>
-        </div>
-      );
-      
-      const FollowersMemo = useMemo(() => {
-        if (!filteredData) return <></>;
-        return filteredData.followers.map((item: UserData, key: number) => renderItem(item, key));
-    }, [filteredData]);
-    
-    const FollowingsMemo = useMemo(() => {
-        if (!filteredData) return <></>;
-        return filteredData.following.map((item: UserData, key: number) => renderItem(item, key));
-    }, [filteredData]);
-    
-    const FansMemo = useMemo(() => {
-        if (!filteredData) return <></>;
-        return filteredData.fans.map((item: UserData, key: number) => renderItem(item, key));
-    }, [filteredData]);
-    
-    const UnfollowersMemo = useMemo(() => {
-        if (!filteredData) return <></>;
-        return filteredData.unfollowers.map((item: UserData, key: number) => renderItem(item, key));
-    }, [filteredData]);
     
     return (
+        <>
         <div className="flex flex-col -mt-20 px-[3%]">
             <div className="grid gap-8 pb-20" style={{ gridTemplateColumns: "70% auto" }}>
                 <div className="flex flex-col gap-4">
                     <div className="flex flex-row gap-8 h-min">
-                        <section className={`basis-1/2 ${styles['card']}`}>
-                            <div className="flex flex-col justify-between gap-2">
+                        {data?.transactions?.last_follower?.from_user &&
+                        <section className={`flex-grow ${styles['card']}`}>
+                            <div className={`flex flex-col justify-between gap-2`}>
                                 <div className="text-neutral-500">
                                     Recent Follower
+                                    <span className="pl-5 text-sm underline hover:cursor-pointer" onClick={() => { setShowFollowers(true) }}>View all</span>
                                 </div>
                                 {!loading ? <div className="flex flex-row gap-4 items-center">
                                         <Image src={data?.transactions?.last_follower?.from_user?.avatar_url}
@@ -141,7 +84,9 @@ export default function UserDashboard({ loading, data }: props) {
                                             
                                             className="w-10 h-10 rounded-full" />
                                         <div className="flex flex-col justify-center">
-                                            <span className="text-lg text-neutral-700 font-semibold">{data?.transactions?.last_follower?.from_user?.insta_name || data?.transactions?.last_follower?.from_user?.username}</span>
+                                            <Link href={`https://www.instagram.com/${data?.transactions?.last_follower?.from_user?.username}/`} target="_blank">
+                                                <span className="text-lg text-neutral-700 font-semibold">{data?.transactions?.last_follower?.from_user?.insta_name || data?.transactions?.last_follower?.from_user?.username}</span>
+                                            </Link>   
                                             <span className="text-neutral-400 tracking-wider text-sm">@{data?.transactions?.last_follower?.from_user?.username}</span>
                                         </div>
                                     </div>
@@ -150,13 +95,16 @@ export default function UserDashboard({ loading, data }: props) {
                                     {data?.transactions?.last_follower?.timestamp}
                                 </div>
                                     : <div className={`${styles['loading-card']} h-[1.5rem] mt-1`} />}
-                            </div>
+                            </div>                 
                         </section>
-                        <section className={`basis-1/2 ${styles['card']} grid`}
+                        }
+                        {data?.transactions?.last_unfollower?.from_user &&
+                        <section className={`flex-grow ${styles['card']} grid`}
                             style={{ gridTemplateColumns: "65% auto" }}>
                             <div className="flex flex-col justify-between gap-2">
                                 <div className="text-neutral-500">
                                     Recent Unfollower
+                                    <span className="pl-5 text-sm underline hover:cursor-pointer" onClick={() => { setShowUnfollowers(true) }}>View all</span>
                                 </div>
                                 {!loading ? <div className="flex flex-row gap-4 items-center">
                                         <Image src={data?.transactions?.last_unfollower?.from_user?.avatar_url}
@@ -165,7 +113,9 @@ export default function UserDashboard({ loading, data }: props) {
                                             height={200}
                                             className="w-10 h-10 rounded-full" />
                                         <div className="flex flex-col justify-center">
-                                            <span className="text-lg text-neutral-700 font-semibold">{data?.transactions?.last_unfollower?.from_user?.insta_name || data?.transactions?.last_follower?.from_user?.username}</span>
+                                            <Link href={`https://www.instagram.com/${data?.transactions?.last_follower?.from_user?.username}/`} target="_blank">
+                                                <span className="text-lg text-neutral-700 font-semibold">{data?.transactions?.last_follower?.from_user?.insta_name || data?.transactions?.last_follower?.from_user?.username}</span>
+                                            </Link>
                                             <span className="text-neutral-400 tracking-wider text-sm">@{data?.transactions?.last_unfollower?.from_user?.username}</span>
                                         </div>
                                     </div>
@@ -176,21 +126,22 @@ export default function UserDashboard({ loading, data }: props) {
                                     : <div className={`${styles['loading-card']} h-[1.5rem] mt-1`} />}
                             </div>
                         </section>
+                        }
                     </div>
-                    <section className={`${styles['card']} flex flex-col overflow-y-scroll`}>
+                    <section className={`${styles['card']} flex flex-col`}>
                         <span className="text-neutral-500">My Social Circle</span>
                         <div className="flex flex-row justify-between items-center">
                             <div className="flex flex-row flex-wrap gap-2 mt-2 items-center" id="wrap">
                                 <button className={`flex flex-row items-center gap-2 border border-neutral-500/[0.5] 
                     rounded-xl py-0.5 px-4 hover:border-red-500 text-neutral-500 transition-all duration-300 z-10
-                    ${socialSelected == 3 && 'bg-red-50 border-red-500'}`}
+                    ${socialSelected == 3 && 'border-red-500'}`}
                                     onClick={() => { setSocialSelected(3) }}>
                                     <div className="w-3 h-3 rounded-full bg-red-500" />
                                     Doesn&apos;t follow user back
                                 </button>
                                 <button className={`flex flex-row items-center gap-2 border border-neutral-500/[0.5] 
                     rounded-xl py-0.5 px-4 hover:border-blue-500 text-neutral-500 transition-all duration-300 z-10
-                    ${socialSelected == 2 && 'bg-blue-50 border-blue-500'}`}
+                    ${socialSelected == 2 && 'border-[#3b83f6]'}`}
                                     onClick={() => { setSocialSelected(2) }}>
                                     <div className="w-3 h-3 rounded-full bg-blue-500" />
                                     User doesn&apos;t follow back
@@ -198,37 +149,31 @@ export default function UserDashboard({ loading, data }: props) {
                                 <div className="w-[1px] h-6 bg-slate-200" id="divider"/>   
                                 <button className={`flex flex-row items-center gap-2 border border-neutral-500/[0.5] 
                     rounded-xl py-0.5 px-4 hover:border-indigo-500 text-neutral-500 transition-all duration-300 z-10
-                    ${socialSelected == 0 && 'bg-indigo-50 border-indigo-500'}`}
+                    ${socialSelected == 0 && 'border-[#6365f1]'}`}
                                     onClick={() => { setSocialSelected(0) }}>
                                     <div className="w-3 h-3 rounded-full bg-indigo-500" />
                                     Followers
                                 </button>
                                 <button className={`flex flex-row items-center gap-2 border border-neutral-500/[0.5] 
                     rounded-xl py-0.5 px-4 hover:border-rose-500 text-neutral-500 transition-all duration-300 z-10
-                    ${socialSelected == 1 && 'bg-rose-50 border-rose-500'}`}
+                    ${socialSelected == 1 && 'border-rose-500'}`}
                                     onClick={() => { setSocialSelected(1) }}>
                                     <div className="w-3 h-3 rounded-full bg-rose-500" />
                                     Following
-                                </button>                                                           
+                                </button>                                                                                           
                             </div>
                             <div className="flex flex-row items-center gap-3">
                                 <LuSearch />
                                 <input
                                     placeholder="Search..."
                                     className="outline-none border-b border-neutral-500/[0.5]"
-                                    value={searchQuery} // Bind input value to state
-                                    onChange={handleSearchChange} // Update state on change
+                                    value={searchQuery} 
+                                    onChange={handleSearchChange}
                                 />
                             </div>
                         </div>
-                        {!loading ? <div className="flex flex-col w-full mt-4 max-h-[400px] overflow-y-scroll">
-                        {socialSelected === 0 ?
-                                FollowersMemo :
-                                (socialSelected === 1 ?
-                                    FollowingsMemo :
-                                    (socialSelected === 2 ?
-                                        FansMemo :
-                                        (socialSelected === 3 ? UnfollowersMemo : null)))}
+                        {!loading ? <div className={`flex flex-col justify-center w-full mt-4 overflow-y-scroll ${data?.transactions?.last_follower?.from_user || data?.transactions?.last_unfollower?.from_user ? 'h-96' : 'h-128'}`}>
+                        <SocialDashboard filteredData={filteredData} socialSelected={socialSelected} data={data} />
                         </div>
                         :
                         <div className={`${styles['loading-card']} h-full mt-4`} />}
@@ -279,6 +224,8 @@ export default function UserDashboard({ loading, data }: props) {
                 </div>
             </div>
         </div>
+        <TransactionsModal showFollowers={showFollowers} setShowFollowers={setShowFollowers} showUnfollowers={showUnfollowers} setShowUnfollowers={setShowUnfollowers} data={data}  />
+        </>
     )
 
 }

@@ -59,6 +59,7 @@ waver{
     bottom: 0;
     z-index: -1;
     background: linear-gradient(to bottom, var(--gradient-from-color, #ffffff), var(--gradient-to-color, #f9fafb));
+    border-radius: 0.75rem;
 }
   
 .card:after {

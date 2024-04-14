@@ -20,6 +20,9 @@ const config: Config = {
       fontSize: {
         'xxs': '8px',
       },
+      spacing: {
+        '128': '32rem',
+      }
     },
   },
   plugins: [],
