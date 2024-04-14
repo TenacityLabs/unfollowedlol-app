@@ -26,7 +26,7 @@ interface TransactionsModalProps {
 const TransactionsModal = ({ showFollowers, setShowFollowers, showUnfollowers, setShowUnfollowers, data }: TransactionsModalProps) => {
 
     const followers = showFollowers ? 'Followers' : 'Unfollowers';
-    const transactions = showFollowers ? data?.transactions.followers_month : data?.transactions.unfollowers_month;
+    const transactions = showFollowers ? data?.transactions.followers_all : data?.transactions.unfollowers_all;
 
     const renderTransactions = (item: TransactionData, key: number) => (    
         <div key={key} className={`flex flex-row justify-between py-2 border-t-neutral-300/[0.3] items-center ${key === 0 ? '' : 'border-t'}`}>
