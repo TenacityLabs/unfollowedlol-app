@@ -42,7 +42,7 @@ waver{
 }
 
 .card {
-    background-image: linear-gradient(to bottom, #ffffffe8, #f9fafbe8);
+    background: white;
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
     border-radius: 0.75rem;
     padding: 1.75rem;
@@ -58,7 +58,7 @@ waver{
     right: 0;
     bottom: 0;
     z-index: -1;
-    background: linear-gradient(to bottom, var(--gradient-from-color, #ffffff), var(--gradient-to-color, #f9fafb));
+    background: white;
     border-radius: 0.75rem;
 }
   

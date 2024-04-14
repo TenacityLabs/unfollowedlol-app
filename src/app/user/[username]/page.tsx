@@ -136,7 +136,7 @@ export default function Dashboard() {
 
   return (
     <>
-      <main className="relative overflow-y-scroll">
+      <main className="relative overflow-hidden w-screen">
         <div className={`${styles['top-gradient']} rounded-b-xl text-white px-[3%] pt-4 ${(loadPercent < 100 || processed) ? "pb-28" : "pb-10"}
       flex flex-col transition-all duration-300`}>
           <div className="flex flex-row justify-between items-center">
