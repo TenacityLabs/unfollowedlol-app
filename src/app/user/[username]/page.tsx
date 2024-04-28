@@ -182,7 +182,7 @@ export default function Dashboard() {
               :
               <div className="flex flex-row justify-between items-center w-full"> 
               <div className="flex flex-col w-full">
-                <span className="text-[2.15rem]">{data?.instanme || data?.username || params?.username}&apos;s Dashboard</span>
+                <span className="text-[2.15rem]">{data?.instaname || data?.username || params?.username}&apos;s Dashboard</span>
                 <div className="flex flex-row gap-2 items-center" style={{ display: processed ? 'flex' : 'none' }}>
                   <span className="text-[1rem]">LAST PROCESSED: </span>
                   <span className="text-[1rem]">{processed ? formatDate(data?.general.last_updated) : null}</span>
