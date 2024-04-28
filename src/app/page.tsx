@@ -52,8 +52,8 @@ export default function Home() {
                     <p className="max-w-lg text-wrap text-base sm:text-xl text-center bg-gradient-to-b from-[#FFFFFF] to-[#ffffff86] text-transparent bg-clip-text">Unlock the secrets of your social circle, without compromising your account&apos;s safety.</p>
                 </div>
                 <button className="relative rounded-xl overflow-hidden rainbow-button text-center text-base pt-4 pb-4 pl-7 pr-7">
-                  <Link href="https://docs.google.com/forms/d/e/1FAIpQLSff2yOlenE692GeMZG9rc9HEL7PH_kVUim5-uL4sB_QAkFN4w/viewform">
-                    Join Waitlist
+                  <Link href="https://chromewebstore.google.com/detail/unfollowedlol-instagram-f/enpnfinfcofolfaknijihcopponbmnak">
+                    Get The Extension
                   </Link>
                 </button>
             </div>
@@ -130,8 +130,8 @@ export default function Home() {
                   </p>
                   
                   <button className="text-white text-xs py-2 px-5 rounded-xl border-white border">
-                    <Link href="https://docs.google.com/forms/d/e/1FAIpQLSff2yOlenE692GeMZG9rc9HEL7PH_kVUim5-uL4sB_QAkFN4w/viewform">
-                      Join Waitlist
+                    <Link href="https://chromewebstore.google.com/detail/unfollowedlol-instagram-f/enpnfinfcofolfaknijihcopponbmnak">
+                      Get The Extension
                     </Link>
                   </button>
                   

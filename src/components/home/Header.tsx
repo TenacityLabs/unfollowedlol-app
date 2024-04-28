@@ -46,8 +46,8 @@ const Header = () => {
                 </p>
             </div>
             <button className="order-1 sm:order-2 text-base rainbow-button py-3 px-5 rounded-xl">
-                <Link href="https://docs.google.com/forms/d/e/1FAIpQLSff2yOlenE692GeMZG9rc9HEL7PH_kVUim5-uL4sB_QAkFN4w/viewform">
-                    Join Waitlist
+                <Link href="https://chromewebstore.google.com/detail/unfollowedlol-instagram-f/enpnfinfcofolfaknijihcopponbmnak">
+                    Get The Extension
                 </Link>
             </button>
         </div>
