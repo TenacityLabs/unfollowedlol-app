@@ -150,17 +150,6 @@ export default function Dashboard() {
               <span className="opacity-[0.4]">/</span>
               <span>{params.username}</span>
             </div>
-            <div className="flex flex-row gap-3 items-center text-xl">
-              <button>
-                <LuSettings />
-              </button>
-              <button>
-                <SlQuestion />
-              </button>
-              <button>
-                <BiLogOut />
-              </button>
-            </div>
           </div>
           <div className={`flex font-semibold mt-8 tracking-wider h-[5rem] items-end`}>
             {loadPercent < 100 ?
