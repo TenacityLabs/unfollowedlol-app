@@ -216,7 +216,7 @@ export default function UserDashboard({ loading, data }: DashboardProps) {
                     <section className={`${styles['card']} flex flex-col justify-center items-center`}>
                         <span className="w-full text-neutral-600 text-lg font-medium">Report an Issue</span>
                         <span className="w-full text-gray-500 text-sm mb-6">Found a bug? Help us improve unfollowed.lol by reporting it. We appreciate you!</span>
-                        <Link href="https://docs.google.com/forms/d/e/1FAIpQLSesgcw1yP1fm6OlO8p5jb4u-jCz71AFXYUSNAZJ3JvDZVjW5A/viewform">
+                        <Link target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSesgcw1yP1fm6OlO8p5jb4u-jCz71AFXYUSNAZJ3JvDZVjW5A/viewform">
                         <button className="h-10 p-3 bg-indigo-800 bg-opacity-10 rounded-md border border-slate-700 justify-center items-center gap-2.5 inline-flex max-w-fit">
                             <img src="/bug.svg" className="w-5 h-5"></img>
                             <span>Bug report form</span>
