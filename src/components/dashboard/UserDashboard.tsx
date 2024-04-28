@@ -107,14 +107,16 @@ export default function UserDashboard({ loading, data }: DashboardProps) {
                                     <span className="pl-5 text-sm underline hover:cursor-pointer" onClick={() => { setShowUnfollowers(true) }}>View all</span>
                                 </div>
                                 {!loading ? <div className="flex flex-row gap-4 items-center">
-                                        <Image src={data?.transactions?.last_unfollower?.from_user?.avatar_url}
+                                        <Image 
+                                            src={data?.transactions?.last_unfollower?.from_user?.avatar_url}
                                             alt="pfp"
                                             width={200}
                                             height={200}
-                                            className="w-10 h-10 rounded-full" />
+                                            className="w-10 h-10 rounded-full"
+                                             />
                                         <div className="flex flex-col justify-center">
-                                            <Link href={`https://www.instagram.com/${data?.transactions?.last_follower?.from_user?.username}/`} target="_blank">
-                                                <span className="text-lg text-neutral-700 font-semibold">{data?.transactions?.last_follower?.from_user?.insta_name || data?.transactions?.last_follower?.from_user?.username}</span>
+                                            <Link href={`https://www.instagram.com/${data?.transactions?.last_unfollower?.from_user?.username}/`} target="_blank">
+                                                <span className="text-lg text-neutral-700 font-semibold">{data?.transactions?.last_unfollower?.from_user?.insta_name || data?.transactions?.last_unfollower?.from_user?.username}</span>
                                             </Link>
                                             <span className="text-neutral-400 tracking-wider text-sm">@{data?.transactions?.last_unfollower?.from_user?.username}</span>
                                         </div>
