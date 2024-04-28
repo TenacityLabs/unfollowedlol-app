@@ -51,11 +51,14 @@ export default function Home() {
                     <p className="max-w-3xl h-56 text-wrap text-5xl hero-text:text-8xl text-center font-bold leading-[115%] bg-gradient-to-b from-[#FFFFFF] to-[#ffffff86] text-transparent bg-clip-text">Discover who&apos;s unfollowing you</p>
                     <p className="max-w-lg text-wrap text-base sm:text-xl text-center bg-gradient-to-b from-[#FFFFFF] to-[#ffffff86] text-transparent bg-clip-text">Unlock the secrets of your social circle, without compromising your account&apos;s safety.</p>
                 </div>
+                <div className="flex flex-col gap-2">
                 <button className="relative rounded-xl overflow-hidden rainbow-button text-center text-base pt-4 pb-4 pl-7 pr-7">
                   <Link href="https://chromewebstore.google.com/detail/unfollowedlol-instagram-f/enpnfinfcofolfaknijihcopponbmnak">
                     Get The Extension
                   </Link>
                 </button>
+                <Link className="max-w-lg text-wrap sm:text-base text-center text-white bg-clip-text mt-2 text-base hover:text-[#ffffff86]" href="/setup">See how it works</Link>
+                </div>
             </div>
         </div>
         </div>
