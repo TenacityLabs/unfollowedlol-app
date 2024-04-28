@@ -98,7 +98,7 @@ export default function Home() {
               <p className="text-wrap text-white font-bold text-4xl">Frequently Asked Questions</p>
               <div className="flex flex-col">
                   <DropDown question="How can I install Unfollowed.lol" 
-                  answer="We are currently still in the beta stage of Unfollowed.lol. Join our waitlist to guarentee a spot to be a beta tester!" 
+                  answer="You can download the extension from the Chrome Web Store by clicking the 'Get The Extension' button on the top right or bottom of the page." 
                   style="border-t-2"/>
                   <DropDown question="Do I need to enter my login information?" 
                   answer="You don't need to enter your login information to use the app, as it accesses Instagram content through their API without requiring personal login credentials from users." />
