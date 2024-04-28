@@ -67,15 +67,6 @@ export default function Home() {
             <span>Home</span>
           </div>
           <div className="flex flex-row gap-3 items-center text-xl">
-            <button>
-              <LuSettings />
-            </button>
-            <button>
-              <SlQuestion />
-            </button>
-            <button>
-              <BiLogOut />
-            </button>
           </div>
         </div>
         <div

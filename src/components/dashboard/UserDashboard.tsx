@@ -105,8 +105,8 @@ export default function UserDashboard({ loading, data }: DashboardProps) {
                                 {!loading ? <div className="flex flex-row gap-4 items-center">
                                 <UserAvatar src={data?.transactions?.last_unfollower?.from_user?.avatar_url} alt={"pfp"} width={200} height={200} className={"w-10 h-10 rounded-full"}/>
                                         <div className="flex flex-col justify-center">
-                                            <Link href={`https://www.instagram.com/${data?.transactions?.last_follower?.from_user?.username}/`} target="_blank">
-                                                <span className="text-lg text-neutral-700 font-semibold">{data?.transactions?.last_follower?.from_user?.insta_name || data?.transactions?.last_follower?.from_user?.username}</span>
+                                            <Link href={`https://www.instagram.com/${data?.transactions?.last_unfollower?.from_user?.username}/`} target="_blank">
+                                                <span className="text-lg text-neutral-700 font-semibold">{data?.transactions?.last_unfollower?.from_user?.insta_name || data?.transactions?.last_unfollower?.from_user?.username}</span>
                                             </Link>
                                             <span className="text-neutral-400 tracking-wider text-sm">@{data?.transactions?.last_unfollower?.from_user?.username}</span>
                                         </div>
@@ -207,7 +207,7 @@ export default function UserDashboard({ loading, data }: DashboardProps) {
                     <section className={`${styles['card']} flex flex-col justify-center items-center`}>
                         <span className="w-full text-neutral-600 text-lg font-medium">Report an Issue</span>
                         <span className="w-full text-gray-500 text-sm mb-6">Found a bug? Help us improve unfollowed.lol by reporting it. We appreciate you!</span>
-                        <Link href="https://docs.google.com/forms/d/e/1FAIpQLSesgcw1yP1fm6OlO8p5jb4u-jCz71AFXYUSNAZJ3JvDZVjW5A/viewform">
+                        <Link target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSesgcw1yP1fm6OlO8p5jb4u-jCz71AFXYUSNAZJ3JvDZVjW5A/viewform">
                         <button className="h-10 p-3 bg-indigo-800 bg-opacity-10 rounded-md border border-slate-700 justify-center items-center gap-2.5 inline-flex max-w-fit">
                             <img src="/bug.svg" className="w-5 h-5"></img>
                             <span>Bug report form</span>
