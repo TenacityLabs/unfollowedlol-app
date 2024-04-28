@@ -112,7 +112,6 @@ export default function Home() {
 
           <div className="flex flex-col z-10">
             <div className="sm:h-20 p-3 sm:p-0 justify-items-center items-center flex-col flex sm:flex-row flex-shrink-0 justify-around gap-6 sm:gap-0">
-              <p className="text-white font-bold text-3xl" ><span className="text-[#7993FF]">un</span>followed.lol</p>
               <div className="flex sm:flex-row flex-col gap-6 sm:gap-5 items-center">
                   {/* <p className="text-white text-lg opacity-50 hover:opacity-100 transition-opacity duration-30 cursor-pointer">
                       About
@@ -134,13 +133,6 @@ export default function Home() {
                       Get The Extension
                     </Link>
                   </button>
-                  
-              </div>
-
-              <div className="flex gap-[18px]">
-                  <img src="/email.svg" alt="" className="w-6"/>
-                  <img src="/instagram.svg" alt="" className="w-6"/>
-                  <img src="/linkedin.svg" alt="" className="w-6"/>
               </div>
             </div>
           </div>

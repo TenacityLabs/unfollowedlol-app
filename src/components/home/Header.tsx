@@ -28,11 +28,8 @@ const Header = () => {
 
     return ( 
         <div className="z-10 p-8 w-screen justify-items-center items-center flex flex-shrink-0 justify-around flex-wrap sm:gap-0 gap-4">
-            <p className="text-white font-bold text-2xl">unfollowed.lol</p>
+            <p className="text-white font-bold text-2xl absolute top-8 left-8 right-0">unfollowed.lol</p>
             <div className="flex gap-8 order-2 sm:order-1 w-screen sm:w-auto justify-center">
-                {/* <p className="hidden sm:flex text-white text-lg cursor-pointer">
-                    About
-                </p> */}
                 <Link href="/home">
                 <p className="hidden sm:flex text-white text-lg cursor-pointer">
                     Home
@@ -45,11 +42,6 @@ const Header = () => {
                     FAQ
                 </p>
             </div>
-            <button className="order-1 sm:order-2 text-base rainbow-button py-3 px-5 rounded-xl">
-                <Link href="https://chromewebstore.google.com/detail/unfollowedlol-instagram-f/enpnfinfcofolfaknijihcopponbmnak">
-                    Get The Extension
-                </Link>
-            </button>
         </div>
      );
 }
