@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { FaArrowRight } from 'react-icons/fa';
+import UserAvatar from './UserAvatar';
 
 interface UserData {
     username: string;
@@ -31,7 +32,7 @@ const TransactionsModal = ({ showFollowers, setShowFollowers, showUnfollowers, s
     const renderTransactions = (item: TransactionData, key: number) => (    
         <div key={key} className={`flex flex-row justify-between py-2 border-t-neutral-300/[0.3] items-center ${key === 0 ? '' : 'border-t'}`}>
             <div className="flex flex-row gap-4 items-center">
-                <Image src={item?.from_user.avatar_url ?? '/default-avatar.png'}
+                <UserAvatar src={item?.from_user.avatar_url ?? '/default-avatar.png'}
                     alt="profile picture"
                     width={40}
                     height={40}

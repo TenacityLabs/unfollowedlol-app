@@ -6,6 +6,7 @@ import Link from "next/link"
 import TransactionsModal from "./TransactionsModal";
 import SocialDashboard from "./SocialDashboard"
 import { DashboardProps, UserData } from "./types"
+import UserAvatar from "./UserAvatar"
 
 
 export default function UserDashboard({ loading, data }: DashboardProps) {
@@ -77,12 +78,7 @@ export default function UserDashboard({ loading, data }: DashboardProps) {
                                     <span className="pl-5 text-sm underline hover:cursor-pointer" onClick={() => { setShowFollowers(true) }}>View all</span>
                                 </div>
                                 {!loading ? <div className="flex flex-row gap-4 items-center">
-                                        <Image src={data?.transactions?.last_follower?.from_user?.avatar_url}
-                                            alt="pfp"
-                                            width={200}
-                                            height={200}
-                                            
-                                            className="w-10 h-10 rounded-full" />
+                                        <UserAvatar src={data?.transactions?.last_follower?.from_user?.avatar_url} alt={"pfp"} width={200} height={200} className={"w-10 h-10 rounded-full"}/>
                                         <div className="flex flex-col justify-center">
                                             <Link href={`https://www.instagram.com/${data?.transactions?.last_follower?.from_user?.username}/`} target="_blank">
                                                 <span className="text-lg text-neutral-700 font-semibold">{data?.transactions?.last_follower?.from_user?.insta_name || data?.transactions?.last_follower?.from_user?.username}</span>
@@ -107,11 +103,7 @@ export default function UserDashboard({ loading, data }: DashboardProps) {
                                     <span className="pl-5 text-sm underline hover:cursor-pointer" onClick={() => { setShowUnfollowers(true) }}>View all</span>
                                 </div>
                                 {!loading ? <div className="flex flex-row gap-4 items-center">
-                                        <Image src={data?.transactions?.last_unfollower?.from_user?.avatar_url}
-                                            alt="pfp"
-                                            width={200}
-                                            height={200}
-                                            className="w-10 h-10 rounded-full" />
+                                <UserAvatar src={data?.transactions?.last_unfollower?.from_user?.avatar_url} alt={"pfp"} width={200} height={200} className={"w-10 h-10 rounded-full"}/>
                                         <div className="flex flex-col justify-center">
                                             <Link href={`https://www.instagram.com/${data?.transactions?.last_follower?.from_user?.username}/`} target="_blank">
                                                 <span className="text-lg text-neutral-700 font-semibold">{data?.transactions?.last_follower?.from_user?.insta_name || data?.transactions?.last_follower?.from_user?.username}</span>
@@ -182,7 +174,8 @@ export default function UserDashboard({ loading, data }: DashboardProps) {
                 <div className="flex flex-col gap-4">
                     <section className={`${styles['card']} flex flex-col`}>
                         <span className="text-neutral-500">Account</span>
-                        {!loading ? <Image src={data?.general?.avatar_url} alt="pfp" className="mt-5 w-24 h-24 self-center rounded-full" sizes="100px" width={0} height={0}/>
+                        {!loading ? 
+                        <UserAvatar src={data?.general?.avatar_url} alt="pfp" className="mt-5 w-24 h-24 self-center rounded-full" width={100} height={100}/>
                         : <div className={`${styles['loading-card']} w-24 h-24 mt-5 self-center`}/>}
                         {!loading ? 
                         <>
