@@ -124,14 +124,14 @@ export default function UserDashboard({ loading, data }: DashboardProps) {
                         <span className="text-neutral-500">My Social Circle</span>
                         <div className="flex flex-row justify-between items-center">
                             <div className="flex flex-row flex-wrap gap-2 mt-2 items-center" id="wrap">
-                                <button className={`flex flex-row items-center gap-2 border border-neutral-500/[0.5] 
+                                <button className={`flex flex-row items-center gap-2 border 
                     rounded-xl py-0.5 px-4 hover:border-red-500 text-neutral-500 transition-all duration-300 z-10
                     ${socialSelected == 3 && 'border-red-500'}`}
                                     onClick={() => { setSocialSelected(3) }}>
                                     <div className="w-3 h-3 rounded-full bg-red-500" />
-                                    Doesn&apos;t follow user back
+                                    Unfollowers
                                 </button>
-                                <button className={`flex flex-row items-center gap-2 border border-neutral-500/[0.5] 
+                                <button className={`flex flex-row items-center gap-2 border
                     rounded-xl py-0.5 px-4 hover:border-blue-500 text-neutral-500 transition-all duration-300 z-10
                     ${socialSelected == 2 && 'border-[#3b83f6]'}`}
                                     onClick={() => { setSocialSelected(2) }}>
@@ -139,14 +139,14 @@ export default function UserDashboard({ loading, data }: DashboardProps) {
                                     User doesn&apos;t follow back
                                 </button>
                                 <div className="w-[1px] h-6 bg-slate-200" id="divider"/>   
-                                <button className={`flex flex-row items-center gap-2 border border-neutral-500/[0.5] 
+                                <button className={`flex flex-row items-center gap-2 border
                     rounded-xl py-0.5 px-4 hover:border-indigo-500 text-neutral-500 transition-all duration-300 z-10
                     ${socialSelected == 0 && 'border-[#6365f1]'}`}
                                     onClick={() => { setSocialSelected(0) }}>
                                     <div className="w-3 h-3 rounded-full bg-indigo-500" />
                                     Followers
                                 </button>
-                                <button className={`flex flex-row items-center gap-2 border border-neutral-500/[0.5] 
+                                <button className={`flex flex-row items-center gap-2 border
                     rounded-xl py-0.5 px-4 hover:border-rose-500 text-neutral-500 transition-all duration-300 z-10
                     ${socialSelected == 1 && 'border-rose-500'}`}
                                     onClick={() => { setSocialSelected(1) }}>
