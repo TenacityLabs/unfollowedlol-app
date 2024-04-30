@@ -3,12 +3,13 @@ import Link from 'next/link';
 import { FaArrowRight } from 'react-icons/fa';
 import Image from 'next/image';
 import { SocialDashboardProps, UserData } from './types';
+import UserAvatar from './UserAvatar';
 
 function SocialDashboard({ filteredData, socialSelected, data }: SocialDashboardProps) {
     const renderItem = (item: UserData, key: number) => (
         <div key={key} className={`flex flex-row justify-between w-full py-2 border-t-neutral-300/[0.3] items-center ${key === 0 ? '' : 'border-t'}`}>
             <div className="flex flex-row gap-4 items-center">
-                <Image src={item?.avatar_url ?? '/default-avatar.png'}
+                <UserAvatar src={item?.avatar_url ?? '/default-avatar.png'}
                     alt="profile picture"
                     width={40}
                     height={40}
@@ -36,7 +37,7 @@ function SocialDashboard({ filteredData, socialSelected, data }: SocialDashboard
     );
 
     const empty = <div className={`flex flex-col w-full gap-10 justify-center items-center text-neutral-500 text-2xl ${data?.transactions?.last_follower?.from_user || data?.transactions?.last_unfollower?.from_user ? 'h-96' : 'h-128'}`}>
-        <Image src="/Person.png" alt="Person" sizes="50vw" width={0} height={0} className="h-[100px] w-auto"/>
+        <UserAvatar src="/Person.png" alt="Person" width={0} height={0} className="h-[100px] w-auto"/>
         <span>Nothing to see here!</span>
         </div>;
 

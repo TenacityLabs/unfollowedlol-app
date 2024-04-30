@@ -88,7 +88,7 @@ const TransactionsModal = ({ showFollowers, setShowFollowers, showUnfollowers, s
     if (!showFollowers && !showUnfollowers) return null;
 
     return (
-        <div className={`fixed inset-0 bg-black/[0.85] backdrop-blur-sm z-[9999] transition-opacity duration-500 modal-overlay`}>
+        <div className={`fixed inset-0 bg-black/[0.85] backdrop-blur-sm z-[9999] transition-opacity duration-500 modal-overlay overflow-y-auto`}>
             <section className="flex flex-col bg-white rounded-lg m-20 p-7 max-h-5/6 relative"  id='followersModal'>
                 <div className="flex justify-between items-center">
                     <span className="text-neutral-500">{followers}</span>
