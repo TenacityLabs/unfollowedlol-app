@@ -28,7 +28,7 @@ const Header = () => {
 
     return ( 
         <div className="z-10 p-8 w-screen justify-items-center items-center flex flex-shrink-0 justify-around flex-wrap sm:gap-0 gap-4">
-            <p className="text-white font-bold text-2xl absolute top-8 left-8 right-0">unfollowed.lol</p>
+            <p className="text-white font-bold text-2xl absolute top-8 left-8 right-0 -z-10">unfollowed.lol</p>
             <div className="flex gap-8 order-2 sm:order-1 w-screen sm:w-auto justify-center">
                 <Link href="/home">
                 <p className="hidden sm:flex text-white text-lg cursor-pointer">
