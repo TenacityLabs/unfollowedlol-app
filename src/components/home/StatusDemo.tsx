@@ -36,7 +36,7 @@ export default function StatusDemo(){
             <div className="z-10 grid-cols-2 grid wrap:flex wrap:flex-wrap justify-items-center justify-around items-center h-full">
                 <div className="mb-[10%] wrap:w-screen flex justify-center">
                     <div className="">
-                        <p className="text-white text-4xl font-bold leading-[110%] text-left wrap:text-center p-8">Track your profile&apos;s followers and unfollowers</p>
+                        <p className="text-white text-4xl font-bold leading-[110%] text-center p-[4%] slide-in left-slide">Track your profile&apos;s followers and unfollowers</p>
                     </div>
                 </div>
                 <div id="features">

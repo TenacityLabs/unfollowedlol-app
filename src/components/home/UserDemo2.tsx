@@ -35,9 +35,9 @@ export default function UserDemo(){
     return ( 
         <div className="flex-1 z-10 ">
             <div className="grid-cols-2 grid justify-items-center wrap:flex wrap:flex-wrap-reverse justify-around items-center h-full">
-                <div className="flex-col flex gap-10 items-center p-[4%]">
-                    <p className="text-white text-4xl font-bold leading-[110%] max-w-[500px] text-left wrap:text-center">See who&apos;s not following you back</p>
-                    <p className="w-full text-white text-2xl text-left">and unfollow them 🙈</p>
+                <div className="flex-col flex gap-10 items-center p-[4%] slide-in left-slide">
+                    <p className="text-white text-4xl font-bold leading-[110%] max-w-[500px] text-center wrap:text-center">See who&apos;s not following you back...</p>
+                    <p className="w-full text-white text-2xl text-center">and unfollow them 🙈</p>
                 </div>
                 <div className="bg-white w-[35rem] h-[22.5rem] rounded-xl flex flex-col ">
                     <div className="flex flex-col gap-2 p-5">
