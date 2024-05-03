@@ -51,11 +51,14 @@ export default function Home() {
                     <p className="max-w-3xl h-56 text-wrap text-5xl hero-text:text-8xl text-center font-bold leading-[115%] bg-gradient-to-b from-[#FFFFFF] to-[#ffffff86] text-transparent bg-clip-text">Discover who&apos;s unfollowing you</p>
                     <p className="max-w-lg text-wrap text-base sm:text-xl text-center bg-gradient-to-b from-[#FFFFFF] to-[#ffffff86] text-transparent bg-clip-text">Unlock the secrets of your social circle, without compromising your account&apos;s safety.</p>
                 </div>
+                <div className="flex flex-col gap-2">
                 <button className="relative rounded-xl overflow-hidden rainbow-button text-center text-base pt-4 pb-4 pl-7 pr-7">
-                  <Link href="https://docs.google.com/forms/d/e/1FAIpQLSff2yOlenE692GeMZG9rc9HEL7PH_kVUim5-uL4sB_QAkFN4w/viewform">
-                    Join Waitlist
+                  <Link href="https://chromewebstore.google.com/detail/unfollowedlol-instagram-f/enpnfinfcofolfaknijihcopponbmnak">
+                    Get The Extension
                   </Link>
                 </button>
+                <Link className="max-w-lg text-wrap sm:text-base text-center text-white bg-clip-text mt-2 text-base hover:text-[#ffffff86]" href="/setup">See how it works</Link>
+                </div>
             </div>
         </div>
         </div>
@@ -97,8 +100,8 @@ export default function Home() {
             style={{backgroundImage: "url('/FAQ-bg.png')" }}>
               <p className="text-wrap text-white font-bold text-4xl">Frequently Asked Questions</p>
               <div className="flex flex-col">
-                  <DropDown question="How can I install Unfollowed.lol?" 
-                  answer="We are currently still in the beta stage of Unfollowed.lol. Join our waitlist to guarentee a spot to be a beta tester!" 
+                  <DropDown question="How can I install Unfollowed.lol" 
+                  answer="You can download the extension from the Chrome Web Store by clicking the 'Get The Extension' button on the top right or bottom of the page." 
                   style="border-t-2"/>
                   <DropDown question="Do I need to enter my login information?" 
                   answer="You don't need to enter your login information to use the app, as it accesses Instagram content through their API without requiring personal login credentials from users." />
@@ -112,11 +115,15 @@ export default function Home() {
 
           <div className="flex flex-col z-10">
             <div className="sm:h-20 p-3 sm:p-0 justify-items-center items-center flex-col flex sm:flex-row flex-shrink-0 justify-around gap-6 sm:gap-0">
-              <p className="text-white font-bold text-3xl" ><span className="text-[#7993FF]">un</span>followed.lol</p>
               <div className="flex sm:flex-row flex-col gap-6 sm:gap-5 items-center">
                   {/* <p className="text-white text-lg opacity-50 hover:opacity-100 transition-opacity duration-30 cursor-pointer">
                       About
                   </p> */}
+                  <Link href="/home">
+                  <p className="text-white text-lg opacity-50 hover:opacity-100 transition-opacity duration-30 cursor-pointer">
+                      Home
+                  </p>
+                  </Link>
                   <p onClick={scrollToFeatures}className="text-white text-lg opacity-50 hover:opacity-100 transition-opacity duration-30 cursor-pointer">
                       Features
                   </p>
@@ -125,17 +132,10 @@ export default function Home() {
                   </p>
                   
                   <button className="text-white text-xs py-2 px-5 rounded-xl border-white border">
-                    <Link href="https://docs.google.com/forms/d/e/1FAIpQLSff2yOlenE692GeMZG9rc9HEL7PH_kVUim5-uL4sB_QAkFN4w/viewform">
-                      Join Waitlist
+                    <Link href="https://chromewebstore.google.com/detail/unfollowedlol-instagram-f/enpnfinfcofolfaknijihcopponbmnak">
+                      Get The Extension
                     </Link>
                   </button>
-                  
-              </div>
-
-              <div className="flex gap-[18px]">
-                  <img src="/email.svg" alt="" className="w-6"/>
-                  <img src="/instagram.svg" alt="" className="w-6"/>
-                  <img src="/linkedin.svg" alt="" className="w-6"/>
               </div>
             </div>
           </div>

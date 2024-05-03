@@ -8,47 +8,52 @@ import { LuSettings } from "react-icons/lu";
 import UnprocessedDashboard from "@/components/dashboard/UnprocessedDashboard";
 import { useParams } from "next/navigation";
 import Link from "next/link";
+import ApiError from "./ApiError";
 
 export default function Dashboard() {
-  //is this just visual?
   const params = useParams<{ username: string }>();
-
+  
   const [loadPercent, setLoadPercent] = useState<number>(0);
   const [processed, setProcessed] = useState<boolean>(false);
   const [modalOpen, setModalOpen] = useState<boolean>(false);
+  const [data, setData] = useState<any>(null);
+  // Introduce a new state variable for error tracking
+  const [hasError, setHasError] = useState<boolean>(false);
 
-  const [data, setData] = useState<any>(null)
-
-  const modalRef = useRef<any>(null)
+  const modalRef = useRef<any>(null);
 
   useEffect(() => {
     getData();
   }, []);
 
   const getData = () => {
-    setData(null)
+    setData(null);
     setLoadPercent(0);
-    fetch(`http://api.unfollowed.lol:8000/user/${params.username}/`)
-      .then(response => response.json())
+    setHasError(false); // Reset error state on new fetch attempt
+    fetch(`https://api.unfollowed.lol:8000/user/${params.username}/`)
+      .then(response => {
+        return response.json();
+      })
       .then(data => {
-        if(data.error){
-          setData(null);
-          setLoadPercent(100);
-          setProcessed(false);
-        } else {
-          if(!localStorage.getItem("firstTime")){
-            localStorage.setItem("firstTime", "true");
-            setModalOpen(true)
+        if (data.error) {
+          if (data.error === "User not found") {
+            setData(null);
+            setLoadPercent(100);
+            setProcessed(false);
+          } else {
+            setHasError(true);
           }
-          setData(data)
+        } else {
+          if (!localStorage.getItem("firstTime")) {
+            localStorage.setItem("firstTime", "true");
+            setModalOpen(true);
+          }
+          setData(data);
           setLoadPercent(100);
           setProcessed(true);
         }
       })
-      .catch(error => {
-        console.error(error)
-      });
-  }
+  };
 
   function formatDate(dateString: string): string {
     const date = new Date(dateString + 'Z'); // Parse as UTC
@@ -125,10 +130,13 @@ export default function Dashboard() {
     }
   }, [loadPercent, data]); 
   
+  if (hasError) {
+    return <ApiError />;
+  }
 
   return (
     <>
-      <main className="relative overflow-y-scroll">
+      <main className="relative overflow-hidden w-screen">
         <div className={`${styles['top-gradient']} rounded-b-xl text-white px-[3%] pt-4 ${(loadPercent < 100 || processed) ? "pb-28" : "pb-10"}
       flex flex-col transition-all duration-300`}>
           <div className="flex flex-row justify-between items-center">
@@ -136,20 +144,11 @@ export default function Dashboard() {
               <Link href="/home">
               <img src="/unfollowed_logo.png" alt="unfollowed.lol logo" className="w-6 h-6" />
               </Link>
+              <Link href="/">
               <span>unfollowed.lol</span>
+              </Link>
               <span className="opacity-[0.4]">/</span>
               <span>{params.username}</span>
-            </div>
-            <div className="flex flex-row gap-3 items-center text-xl">
-              <button>
-                <LuSettings />
-              </button>
-              <button>
-                <SlQuestion />
-              </button>
-              <button>
-                <BiLogOut />
-              </button>
             </div>
           </div>
           <div className={`flex font-semibold mt-8 tracking-wider h-[5rem] items-end`}>
@@ -170,22 +169,24 @@ export default function Dashboard() {
                 </div>
               </div>
               :
-              <div className="flex flex-row justify-between w-full"> 
+              <div className="flex flex-row justify-between items-center w-full"> 
               <div className="flex flex-col w-full">
-                <span className="text-[2.15rem]">{data?.instanme || data?.username || params?.username}&apos;s Dashboard</span>
+                <span className="text-[2.15rem]">{data?.instaname || data?.username || params?.username}&apos;s Dashboard</span>
                 <div className="flex flex-row gap-2 items-center" style={{ display: processed ? 'flex' : 'none' }}>
                   <span className="text-[1rem]">LAST PROCESSED: </span>
-                  <span className="text-[1rem]">{formatDate(data?.general.last_updated)}</span>
+                  <span className="text-[1rem]">{processed ? formatDate(data?.general.last_updated) : null}</span>
                 </div>
               </div>
-              <div className="min-w-fit p-5 bg-gradient-to-l from-indigo-500 via-purple-600 to-amber-500 rounded-[10px]  justify-start items-center gap-3.5 inline-flex">
-              <img src="/instagram_logo.svg" className="fill-white w-5 h-5"></img>
+              <Link href={`https://www.instagram.com/${params.username}/`}>
+                <div className={`p-2 h-12 w-52 border rounded-[10px] justify-center items-center gap-3 inline-flex ${processed && loadPercent > 99 ? null : "hidden"}`}>
+                  <img src="/instagram.svg" className="fill-white w-5 h-5"></img>
                   <div className="text-center text-white text-xl font-normal min-w-fit">Reprocess User</div>
                 </div>
+              </Link>
               </div>} 
           </div>
         </div>
-        { !(loadPercent < 100) && !processed ? <UnprocessedDashboard />
+        { !(loadPercent < 100) && !processed ? <UnprocessedDashboard username={params.username}/>
           :
           <UserDashboard loading={loadPercent < 100} data={data}/>}
       </main>
