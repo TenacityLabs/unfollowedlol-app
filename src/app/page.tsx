@@ -97,7 +97,7 @@ export default function Home() {
             style={{backgroundImage: "url('/FAQ-bg.png')" }}>
               <p className="text-wrap text-white font-bold text-4xl">Frequently Asked Questions</p>
               <div className="flex flex-col">
-                  <DropDown question="How can I install Unfollowed.lol" 
+                  <DropDown question="How can I install Unfollowed.lol?" 
                   answer="We are currently still in the beta stage of Unfollowed.lol. Join our waitlist to guarentee a spot to be a beta tester!" 
                   style="border-t-2"/>
                   <DropDown question="Do I need to enter my login information?" 

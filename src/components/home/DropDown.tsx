@@ -22,8 +22,8 @@ const DropDown = ({ question, answer, style }: DropDownProps) => {
                 
             </div>
         </div>
-        <div className={`transition-max-height duration-500 ease-in-out overflow-hidden
-            ${isExpanded ? 'max-h-screen py-6' : 'max-h-0'}`}
+        <div className={`transition-all origin-top duration-500 ease-in-out overflow-hidden mt-2
+            ${isExpanded ? 'scale-y-100 pt-6 pb-2' : 'scale-y-0 py-0'}`}
         >
             <p className="text-white text-xl text-left">{answer}</p>
         </div>
