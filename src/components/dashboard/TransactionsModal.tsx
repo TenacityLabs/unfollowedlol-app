@@ -11,9 +11,7 @@ interface UserData {
 }
 
 interface TransactionData {
-    from_user: UserData;
-    timestamp: string;
-    action: string;
+    user: UserData;
 }
 
 interface TransactionsModalProps {
@@ -27,32 +25,32 @@ interface TransactionsModalProps {
 const TransactionsModal = ({ showFollowers, setShowFollowers, showUnfollowers, setShowUnfollowers, data }: TransactionsModalProps) => {
 
     const followers = showFollowers ? 'Followers' : 'Unfollowers';
-    const transactions = showFollowers ? data?.transactions.followers_all : data?.transactions.unfollowers_all;
+    const transactions = showFollowers ? data?.transactions.follows : data?.transactions.unfollows;
 
     const renderTransactions = (item: TransactionData, key: number) => (    
         <div key={key} className={`flex flex-row justify-between py-2 border-t-neutral-300/[0.3] items-center ${key === 0 ? '' : 'border-t'}`}>
             <div className="flex flex-row gap-4 items-center">
-                <UserAvatar src={item?.from_user.avatar_url ?? '/default-avatar.png'}
+                <UserAvatar src={item?.user.avatar_url ?? '/default-avatar.png'}
                     alt="profile picture"
                     width={40}
                     height={40}
                     className="w-10 h-10 rounded-full" />
                 <div className="flex flex-col justify-center">
-                    <Link href={`https://www.instagram.com/${item.from_user.username}/`} target="_blank">
-                        <span className="text-lg text-neutral-700 font-semibold">{item?.from_user.insta_name || item?.from_user.username}</span>
+                    <Link href={`https://www.instagram.com/${item.user.username}/`} target="_blank">
+                        <span className="text-lg text-neutral-700 font-semibold">{item?.user.insta_name || item?.user.username}</span>
                     </Link>
-                    <span className="text-neutral-400 tracking-wider text-sm">@{item?.from_user.username}</span>
+                    <span className="text-neutral-400 tracking-wider text-sm">@{item?.user.username}</span>
                 </div>
             </div> 
             <div className="flex gap-10 items-center">
-            {item.action} {item.timestamp}
-            <Link href={`https://www.instagram.com/${item.from_user.username}/`} target="_blank">
+            {showFollowers ? 'Followed' : 'Unfollowed'}
+            <Link href={`https://www.instagram.com/${item.user.username}/`} target="_blank">
                     <button className="h-8 px-3.5 py-2 bg-violet-400 bg-opacity-10 rounded-full justify-center items-center gap-2.5 inline-flex max-w-fit">
                         <img src="/instagram_logo.svg" className="w-3 h-3"></img>
                         <span className="text-xs font-semibold">Unfollow</span>
                     </button>
                 </Link>
-                    <Link href={`/user/${item?.from_user.username}`} className="flex items-center justify-center text-neutral-700 hover:text-neutral-400 transition-colors mr-8 gap-5">
+                    <Link href={`/user/${item?.user.username}`} className="flex items-center justify-center text-neutral-700 hover:text-neutral-400 transition-colors mr-8 gap-5">
                         <span className="text-sm">Process profile</span>
                         <FaArrowRight />
                     </Link>
