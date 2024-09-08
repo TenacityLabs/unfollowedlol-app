@@ -36,7 +36,7 @@ function SocialDashboard({ filteredData, socialSelected, data }: SocialDashboard
         </div>
     );
 
-    const empty = <div className={`flex flex-col w-full gap-10 justify-center items-center text-neutral-500 text-2xl ${data?.transactions?.last_follower?.from_user || data?.transactions?.last_unfollower?.from_user ? 'h-96' : 'h-128'}`}>
+    const empty = <div className={`flex flex-col w-full gap-10 justify-center items-center text-neutral-500 text-2xl ${data?.transactions?.recent_follows || data?.transactions?.recent_unfollows ? 'h-96' : 'h-128'}`}>
         <UserAvatar src="/Person.png" alt="Person" width={0} height={0} className="h-[100px] w-auto"/>
         <span>Nothing to see here!</span>
         </div>;
@@ -55,7 +55,7 @@ function SocialDashboard({ filteredData, socialSelected, data }: SocialDashboard
 
     
     return (
-        <div className={`${data?.transactions?.last_follower?.from_user || data?.transactions?.last_unfollower?.from_user ? 'h-96' : 'h-128'}`}>
+        <div className={`${data?.transactions?.recent_follows || data?.transactions?.recent_unfollows ? 'h-96' : 'h-128'}`}>
             {memoizedContent}
         </div>
     );

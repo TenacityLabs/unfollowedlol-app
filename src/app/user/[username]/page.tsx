@@ -19,7 +19,6 @@ export default function Dashboard() {
   const [data, setData] = useState<any>(null);
   // Introduce a new state variable for error tracking
   const [hasError, setHasError] = useState<boolean>(false);
-
   const modalRef = useRef<any>(null);
 
   useEffect(() => {
