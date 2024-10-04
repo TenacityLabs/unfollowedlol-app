@@ -16,7 +16,7 @@ export default function UnprocessedDashboard({username}: UnprocessedDashboardPro
                 <div className="grid grid-cols-3 gap-[5%] mt-4 px-[5%]">
                     <section className="flex flex-col gap-4 items-center">
                         <Image src="/tutorial/step1.png" alt="step1" width={0} height={0} sizes="33vw" className="w-full h-auto rounded"/>
-                        <span className="text-neutral-700">1. Sign into Instagram using Google Chrome and visit @jessica121’s page.</span>
+                        <span className="text-neutral-700">1. Sign into Instagram using Google Chrome and visit @{username} page.</span>
                         <span className="text-indigo-500 italic">Note: You need to be following private accounts to process them</span>
                     </section>
                     <section className="flex flex-col gap-4 items-center">
