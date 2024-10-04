@@ -15,6 +15,7 @@ export default function Dashboard() {
   
   const [loadPercent, setLoadPercent] = useState<number>(0);
   const [processed, setProcessed] = useState<boolean>(false);
+  const [modalOpen, setModalOpen] = useState<boolean>(false);
   const [data, setData] = useState<any>(null);
   // Introduce a new state variable for error tracking
   const [hasError, setHasError] = useState<boolean>(false);
@@ -41,6 +42,14 @@ export default function Dashboard() {
           } else {
             setHasError(true);
           }
+        } else {
+          if (!localStorage.getItem("firstTime")) {
+            localStorage.setItem("firstTime", "true");
+            setModalOpen(true);
+          }
+          setData(data);
+          setLoadPercent(100);
+          setProcessed(true);
         }
       })
   };
@@ -76,6 +85,19 @@ export default function Dashboard() {
     const daySuffix = getDaySuffix(parseInt(day!));
     return `${month} ${day}${daySuffix} ${year}, ${hour}:${minute} ${dayPeriod}`;
   }
+  
+  useEffect(() => {
+    const handleModalClick = (e:MouseEvent) => {
+      if (modalRef.current && !modalRef.current.contains(e.target)) {
+        setModalOpen(false)
+      }
+    }
+
+    document.addEventListener("mousedown", handleModalClick)
+    return () => {
+      document.removeEventListener("mousedown", handleModalClick)
+    }
+  }, [])
 
   useEffect(() => {
     const recentStorage = localStorage.getItem("recents");
@@ -167,6 +189,16 @@ export default function Dashboard() {
           :
           <UserDashboard loading={loadPercent < 100} data={data}/>}
       </main>
+      <div className={`fixed inset-0 bg-black/[0.85] backdrop-blur-sm flex items-center justify-center z-[9999] 
+      transition-opacity duration-500 ${!modalOpen && "pointer-events-none"}`}
+      style={{opacity: modalOpen ? 1 : 0}}>
+        <div className="bg-white min-w-[40%] px-12 py-20 rounded flex items-center justify-center flex-col gap-3" ref={modalRef}>
+          <span className="font-black text-3xl text-neutral-700 text-center">Welcome to unfollowed.lol</span>
+          <span className="text-neutral-500">Let&apos;s start with a quick guide to your dashboard.</span>
+          <button className="rainbow-button px-12 py-3 rounded text-lg mt-10">Take the tour</button>
+          <span className="text-neutral-500 hover:underline cursor-pointer" onClick={() => {setModalOpen(false)}}>Skip tutorial</span>
+        </div>
+      </div>
     </>
   )
 }
