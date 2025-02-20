@@ -70,30 +70,6 @@ export default function UserDashboard({ loading, data }: DashboardProps) {
             <div className="grid gap-8 pb-20" style={{ gridTemplateColumns: "70% auto" }}>
                 <div className="flex flex-col gap-4">
                     <div className="flex flex-row gap-8 h-min">
-                        {data?.transactions?.recent_follows &&
-                        <section className={`flex-grow ${styles['card']}`}>
-                            <div className={`flex flex-col justify-between gap-2`}>
-                                <div className="text-neutral-500">
-                                    Recent Follower
-                                    <span className="pl-5 text-sm underline hover:cursor-pointer" onClick={() => { setShowFollowers(true) }}>View all</span>
-                                </div>
-                                {!loading ? <div className="flex flex-row gap-4 items-center">
-                                        <UserAvatar src={data?.transactions?.recent_follows[0]?.user?.avatar_url} alt={"pfp"} width={200} height={200} className={"w-10 h-10 rounded-full"}/>
-                                        <div className="flex flex-col justify-center">
-                                            <Link href={`https://www.instagram.com/${data?.transactions?.recent_follows[0]?.user?.username}/`} target="_blank">
-                                                <span className="text-lg text-neutral-700 font-semibold">{data?.transactions?.recent_follows[0]?.user?.insta_name || data?.transactions?.recent_follows[0]?.user?.username}</span>
-                                            </Link>   
-                                            <span className="text-neutral-400 tracking-wider text-sm">@{data?.transactions?.recent_follows[0]?.user?.username}</span>
-                                        </div>
-                                    </div>
-                                    : <div className={`${styles['loading-card']} h-[3rem]`} />}
-                                {/* {!loading ? <div className="flex flex-row gap-2 items-center text-neutral-500 mt-1">
-                                    {data?.transactions?.last_follower?.timestamp}
-                                </div>
-                                    : <div className={`${styles['loading-card']} h-[1.5rem] mt-1`} />} */}
-                            </div>                 
-                        </section>
-                        }
                         {data?.transactions?.recent_unfollows[0]?.user &&
                         <section className={`flex-grow ${styles['card']} grid`}
                             style={{ gridTemplateColumns: "65% auto" }}>
