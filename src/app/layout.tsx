@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Analytics } from "@vercel/analytics/react"
 import { Red_Hat_Text, Arvo } from "next/font/google"
 import "./globals.css";
 
@@ -19,7 +20,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={red_hat.className}>{children}</body>
+      <body className={red_hat.className}>{children}
+
+      <Analytics />
+
+      </body>
     </html>
   );
 }
