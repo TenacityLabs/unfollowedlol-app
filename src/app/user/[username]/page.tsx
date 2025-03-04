@@ -12,7 +12,7 @@ import ApiError from "./ApiError";
 
 export default function Dashboard() {
   const params = useParams<{ username: string }>();
-  
+
   const [loadPercent, setLoadPercent] = useState<number>(0);
   const [processed, setProcessed] = useState<boolean>(false);
   const [modalOpen, setModalOpen] = useState<boolean>(false);
@@ -85,9 +85,9 @@ export default function Dashboard() {
     const daySuffix = getDaySuffix(parseInt(day!));
     return `${month} ${day}${daySuffix} ${year}, ${hour}:${minute} ${dayPeriod}`;
   }
-  
+
   useEffect(() => {
-    const handleModalClick = (e:MouseEvent) => {
+    const handleModalClick = (e: MouseEvent) => {
       if (modalRef.current && !modalRef.current.contains(e.target)) {
         setModalOpen(false)
       }
@@ -115,20 +115,20 @@ export default function Dashboard() {
   useEffect(() => {
     const min = 8;
     const variance = 10;
-    
-    if(!data && loadPercent < 100){
+
+    if (!data && loadPercent < 100) {
       const timer = setTimeout(() => {
         setLoadPercent(prev => Math.min(prev + Math.round(min + variance * Math.random()), 99));
       }, 200);
-  
+
       return () => clearTimeout(timer);
     }
-  
-    if(data) {
+
+    if (data) {
       setLoadPercent(100);
     }
-  }, [loadPercent, data]); 
-  
+  }, [loadPercent, data]);
+
   if (hasError) {
     return <ApiError />;
   }
@@ -141,10 +141,10 @@ export default function Dashboard() {
           <div className="flex flex-row justify-between items-center">
             <div className="flex flex-row gap-3 items-center">
               <Link href="/home">
-              <img src="/unfollowed_logo.png" alt="unfollowed.lol logo" className="w-6 h-6" />
+                <img src="/unfollowed_logo.png" alt="unfollowed.lol logo" className="w-6 h-6" />
               </Link>
               <Link href="/">
-              <span>unfollowed.lol</span>
+                <span>unfollowed.lol</span>
               </Link>
               <span className="opacity-[0.4]">/</span>
               <span>{params.username}</span>
@@ -168,35 +168,35 @@ export default function Dashboard() {
                 </div>
               </div>
               :
-              <div className="flex flex-row justify-between items-center w-full"> 
-              <div className="flex flex-col w-full">
-                <span className="text-[2.15rem]">{data?.instaname || data?.username || params?.username}&apos;s Dashboard</span>
-                <div className="flex flex-row gap-2 items-center" style={{ display: processed ? 'flex' : 'none' }}>
-                  <span className="text-[1rem]">LAST PROCESSED: </span>
-                  <span className="text-[1rem]">{processed ? formatDate(data?.general.last_updated) : null}</span>
+              <div className="flex flex-row justify-between items-center w-full">
+                <div className="flex flex-col w-full">
+                  <span className="text-[2.15rem]">{data?.instaname || data?.username || params?.username}&apos;s Dashboard</span>
+                  <div className="flex flex-row gap-2 items-center" style={{ display: processed ? 'flex' : 'none' }}>
+                    <span className="text-[1rem]">LAST PROCESSED: </span>
+                    <span className="text-[1rem]">{processed ? formatDate(data?.general.last_updated) : null}</span>
+                  </div>
                 </div>
-              </div>
-              <Link href={`https://www.instagram.com/${params.username}/`}>
-                <div className={`p-2 h-12 w-52 border rounded-[10px] justify-center items-center gap-3 inline-flex ${processed && loadPercent > 99 ? null : "hidden"}`}>
-                  <img src="/instagram.svg" className="fill-white w-5 h-5"></img>
-                  <div className="text-center text-white text-xl font-normal min-w-fit">Reprocess User</div>
-                </div>
-              </Link>
-              </div>} 
+                <Link href={`https://www.instagram.com/${params.username}/`}>
+                  <div className={`p-2 h-12 w-52 border rounded-[10px] justify-center items-center gap-3 inline-flex ${processed && loadPercent > 99 ? null : "hidden"}`}>
+                    <img src="/instagram.svg" className="fill-white w-5 h-5"></img>
+                    <div className="text-center text-white text-xl font-normal min-w-fit">Reprocess User</div>
+                  </div>
+                </Link>
+              </div>}
           </div>
         </div>
-        { !(loadPercent < 100) && !processed ? <UnprocessedDashboard username={params.username}/>
+        {!(loadPercent < 100) && !processed ? <UnprocessedDashboard username={params.username} />
           :
-          <UserDashboard loading={loadPercent < 100} data={data}/>}
+          <UserDashboard loading={loadPercent < 100} data={data} />}
       </main>
       <div className={`fixed inset-0 bg-black/[0.85] backdrop-blur-sm flex items-center justify-center z-[9999] 
       transition-opacity duration-500 ${!modalOpen && "pointer-events-none"}`}
-      style={{opacity: modalOpen ? 1 : 0}}>
+        style={{ opacity: modalOpen ? 1 : 0 }}>
         <div className="bg-white min-w-[40%] px-12 py-20 rounded flex items-center justify-center flex-col gap-3" ref={modalRef}>
           <span className="font-black text-3xl text-neutral-700 text-center">Welcome to unfollowed.lol</span>
           <span className="text-neutral-500">Let&apos;s start with a quick guide to your dashboard.</span>
-          <button className="rainbow-button px-12 py-3 rounded text-lg mt-10">Take the tour</button>
-          <span className="text-neutral-500 hover:underline cursor-pointer" onClick={() => {setModalOpen(false)}}>Skip tutorial</span>
+          <button className="rainbow-button px-12 py-3 rounded text-lg mt-10" onClick={() => { setModalOpen(false) }}>Take the tour</button>
+          <span className="text-neutral-500 hover:underline cursor-pointer" onClick={() => { setModalOpen(false) }}>Skip tutorial</span>
         </div>
       </div>
     </>

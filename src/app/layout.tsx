@@ -22,7 +22,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={red_hat.className}>{children}
 
-      <Analytics />
+        <Analytics />
 
       </body>
     </html>

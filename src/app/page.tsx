@@ -14,24 +14,24 @@ export default function Home() {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add('visible');
-          observer.unobserve(entry.target); 
+          observer.unobserve(entry.target);
         }
       });
     }, {
       threshold: 0
     });
-  
+
     const leftSlides = document.querySelectorAll('.left-slide');
     leftSlides.forEach(el => observer.observe(el));
-  
+
     const rightSlides = document.querySelectorAll('.right-slide');
     rightSlides.forEach(el => observer.observe(el));
-  
+
     // Cleanup function to disconnect the observer
     return () => {
       observer.disconnect();
     };
-  }, []);  
+  }, []);
 
   return (
     <>
@@ -39,10 +39,10 @@ export default function Home() {
         <div className="bg-[#0B0B0F] w-screen flex flex-col" >
           <div className="h-screen flex flex-col mb-1/5 relative">
             <div className="w-[10%] h-[10%] left-[10%] top-[5%] absolute bg-gradient-to-b from-[#000000] to-[#FFD5CC] rounded-full blur-[100px]" />
-            <div className="w-[15%] h-[20%] left-[10%] top-[5%] absolute bg-gradient-to-b from-[#891600] to-[#661100] blur-[100px]" />
+            <div className="w-[15%] h-[20%] left-[10%] top-[5%] absolute bg-gradient-to-b from-[#840089] to-[#66005c] blur-[100px]" />
 
             <div className="z-10 w-[12%] h-[20%] right-[8%] top-[40%] absolute bg-gradient-to-l from-[#00c3ff] to-[#FF29C3] rounded-full blur-[80px]" />
-            <div className="z-10 w-[15%] h-[35%] right-[0%] top-[55%] translate-x-[50%] absolute bg-gradient-to-b from-[#184BFF] to-[#174AFF] blur-[110px]" />
+            <div className="z-10 w-[15%] h-[35%] right-[0%] top-[55%] translate-x-[50%] absolute bg-gradient-to-b from-[#7c18ff] to-[#8317ff] blur-[110px]" />
 
             <div className="absolute w-[1200px] h-[500px] left-[50%] top-[50%] -translate-x-[55%] -translate-y-[40%] rotate-[14deg] rounded-[100%] border border-zinc-700 opacity-50 z-0">
               <div className="w-full h-full relative">
@@ -90,18 +90,18 @@ export default function Home() {
           </div>
           <div className="flex flex-col relative">
             <div className="w-[30%] h-[15%] left-[12%] top-[40%] -translate-x-[80%] absolute bg-gradient-to-l from-[#FF29C3] to-[#00c3ff] rounded-full blur-[125px]" />
-            <div className="w-[15%] h-[35%] left-[0%] top-[20%] -translate-x-[80%] absolute bg-gradient-to-b from-[#184BFF] to-[#174AFF] blur-[180px]" />
+            <div className="w-[15%] h-[35%] left-[0%] top-[20%] -translate-x-[80%] absolute bg-gradient-to-b from-[#840089] to-[#66005c] blur-[180px]" />
 
             <StatusDemo />
           </div>
           <div className="h-screen flex flex-col relative">
             <div className="w-1/12 h-1/12 right-[5%] top-[15%] -translate-y-[50%] absolute bg-gradient-to-b from-[#FFD5CC] to-[#FFD5CC] rounded-full blur-[100px]" />
-            <div className="w-1/12 h-[30%] right-[10%] top-[30%] -translate-y-[50%] absolute bg-gradient-to-b from-[#891600] to-[#661100] blur-[100px]" />
+            <div className="w-1/12 h-[30%] right-[10%] top-[30%] -translate-y-[50%] absolute bg-gradient-to-b from-[#740089] to-[#4d0066] blur-[100px]" />
             <UserDemo />
           </div>
           <div className="h-screen flex flex-col relative">
             <div className="w-[30%] h-[15%] left-1/12 top-[40%] -translate-x-[60%] absolute bg-gradient-to-l from-[#FF29C3] to-[#00c3ff] rounded-full blur-[115px]" />
-            <div className="w-[16%] h-[35%] left-[0%] top-[50%] -translate-x-[60%] absolute bg-gradient-to-t from-[#184BFF] to-[#174AFF] blur-[150px]" />
+            <div className="w-[16%] h-[35%] left-[0%] top-[50%] -translate-x-[60%] absolute bg-gradient-to-t from-[#7c18ff] to-[#8317ff] blur-[150px]" />
 
             <UserDemo2 />
           </div>
@@ -170,8 +170,8 @@ export default function Home() {
       </main>
       <div className="sticky bottom-5 w-full flex justify-end pr-5 z-[9999] hover:brightness-[0.8] transition-all">
         <a href="https://www.producthunt.com/posts/unfollowed-lol-no-login-insta-tracker?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-unfollowed&#0045;lol&#0045;no&#0045;login&#0045;insta&#0045;tracker" target="_blank">
-          <img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=455334&theme=light" alt="Unfollowed&#0046;lol&#0032;&#0045;&#0032;No&#0032;Login&#0032;Insta&#0032;Tracker - Free&#0032;&#0038;&#0032;No&#0032;Login&#0032;Instagram&#0032;Unfollower&#0032;Tracker | Product Hunt" 
-         width="250" height="54"></img></a>
+          <img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=455334&theme=light" alt="Unfollowed&#0046;lol&#0032;&#0045;&#0032;No&#0032;Login&#0032;Insta&#0032;Tracker - Free&#0032;&#0038;&#0032;No&#0032;Login&#0032;Instagram&#0032;Unfollower&#0032;Tracker | Product Hunt"
+            width="250" height="54"></img></a>
       </div>
     </>
   );

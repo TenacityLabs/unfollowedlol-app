@@ -9,7 +9,7 @@ body::-webkit-scrollbar {
 
 .rainbow-button {
     color: white;
-    background: linear-gradient(to right, #d09010 0%, #AB33FA 40%, #4D6DF4 100%);
+    background: linear-gradient(to right, #b610d0 0%, #954df4 100%);
     background-position: 0 0;
     background-size: 175% 100%;
     background-repeat: repeat-x;
